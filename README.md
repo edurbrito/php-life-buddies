@@ -8,6 +8,23 @@
 
 ## Mockups
 
+
+| Landing Page | Login | Register |
+|---|---|---|
+| ![Landing Page](docs/images/Landing%20Page.png) | ![Login](docs/images/Login.png) | ![Register](docs/images/Register.png) |
+
+| Profile Page | New Pet | View Pet |
+|---|---|---|
+| ![Profile Page](docs/images/Profile.png) | ![New Pet](docs/images/New%20Pet.png) | ![View Pet](docs/images/View%20Pet.png) |
+
+| Adoption List | Search Page |
+|---|---|
+| ![Adoption List](docs/images/Pets%20List.png) | ![Search Page](docs/images/Search%20Page.png) |
+
 ## Navigation
 
+![Navigation Diagram](docs/navigation.png)
+
 ## Database
+
+![Database Diagram](docs/database.png)

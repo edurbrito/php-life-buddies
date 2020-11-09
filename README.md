@@ -23,4 +23,8 @@
 
 ## Navigation
 
+![Navigation Diagram](docs/navigation.png)
+
 ## Database
+
+![Database Diagram](docs/database.png)

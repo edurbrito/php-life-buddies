@@ -1,0 +1,43 @@
+body {
+    max-width: 80em;
+    margin: 0 auto;
+
+    --bg-color: #FFF;
+    --panel-color: #FFF;
+
+    --serif-font: 'Merriweather';
+    --sans-font: 'Open Sans Condensed';
+
+    background-color: var(--bg-color);
+}
+
+a, p, input, li {
+    font-family: var(--serif-font), serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--sans-font), sans-serif;
+}
+
+input[type="text"], input[type="tel"], input[type="email"], input[type="password"] {
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 2px solid rgb(157, 233, 44);
+    border-radius: 30px;
+    background-color: #FFF;
+}
+
+input[type="submit"] {
+    box-sizing: border-box;
+    padding: 12px 30px;
+    margin: 10px 0;
+    border: 2px solid rgb(157, 233, 44);
+    border-radius: 30px;
+    background-color: rgb(157, 233, 44);
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: white;
+}
+

@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 
 input[type="text"], input[type="tel"], input[type="email"], input[type="password"] {
     box-sizing: border-box;
-    padding: 12px 20px;
+    padding: 12px 50px;
     margin: 10px 0;
     border: 2px solid rgb(157, 233, 44);
     border-radius: 30px;
@@ -30,14 +30,42 @@ input[type="text"], input[type="tel"], input[type="email"], input[type="password
 
 input[type="submit"] {
     box-sizing: border-box;
-    padding: 12px 30px;
+    padding: 12px 40px;
     margin: 10px 0;
     border: 2px solid rgb(157, 233, 44);
     border-radius: 30px;
     background-color: rgb(157, 233, 44);
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 1em;
+    font-weight: bold;
     text-transform: uppercase;
     color: white;
 }
 
+#login, #register {
+    width: 80em;
+    margin: 2em auto;
+}
+
+#login header, #register header {
+    color: white;
+    padding: 5em 0;
+    text-align: center;
+    text-transform: uppercase;
+    background: greenyellow;  
+}
+
+#login form, #register form {
+    padding: 2em 31.5em;
+}
+
+#login input, #register input {
+    display: block;
+    margin: 0.5em 0;
+}
+
+#login footer p, #register footer p {
+    padding: 1em;
+    margin-top: -1.5em;
+    text-align: center;
+}

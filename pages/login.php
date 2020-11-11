@@ -22,13 +22,8 @@ if(isset($_SESSION['username']))
         <label for="email">Email:</label>
             <br>
             <input type="email" name="email" placeholder="example@email.com" required>
-            <br>
-            <br>
             <label for="password">Password:</label>
-            <br>
             <input type="password" name="password" placeholder="password" required>
-            <br>
-            <br>
             <input type="submit" value="Login">
         </form>
 

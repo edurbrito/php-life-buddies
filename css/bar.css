@@ -1,0 +1,85 @@
+body {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+header {
+  display: grid;
+  padding: 0px 40px 0px 40px;
+}
+
+header .logo {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  width: 65px;
+  place-self: center;
+  fill: green;
+}
+
+header .notifications {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+header .search {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  width: 30px;
+  place-self: center;
+}
+
+header ul {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  place-self: flex-end;
+}
+
+header .upper-ul {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+header .lower-ul {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-weight: bold;
+}
+
+header ul li {
+  padding: 0px 10px 0px 10px;
+  border-right: solid 2px black;
+  cursor: pointer;
+}
+
+header ul li:last-child {
+  border-right: none;
+}
+
+header hr {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  width: 100%;
+}
+
+footer {
+  padding: 0px 40px 0px 40px;
+  text-align: center;
+}

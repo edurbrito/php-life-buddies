@@ -2,8 +2,10 @@
 
     include_once('./includes/session.php');
     include_once('./templates/tpl_common.php');
-    include_once('./database/db_user.php');
     
-    draw_header(getUser());
+    if(isset($_SESSION['email']))
+        $email = $_SESSION['email'];
+
+    draw_header($email);
     draw_footer();
 ?>

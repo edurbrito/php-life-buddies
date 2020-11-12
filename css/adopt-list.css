@@ -1,0 +1,49 @@
+.adopt-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4em 0 4em;
+}
+
+.adopt-list-item {
+  width: 50%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .adopt-list {
+    flex-direction: column;
+    width: 100vw;
+    padding: 0 0.2em 0 0.2em;
+    align-items: center;
+  }
+  
+  .adopt-list-item {
+    width: auto;
+    padding: 0.6em;
+  }
+}
+
+.adopt-list-item img {
+  width: 5em;
+}
+
+.adopt-list-item h3 {
+  padding: 0 1rem 0 1rem;
+  font-weight: normal;
+  width: fit-content;
+}
+
+.adopt-list-item button {
+  border: solid var(--green-color) 1px;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-family: var(--sans-font);
+  font-weight: normal;
+  width: fit-content;
+}

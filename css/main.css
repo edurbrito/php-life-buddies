@@ -1,0 +1,78 @@
+body {
+  --green-color: #ACC329;
+  --sans-font: 'Roboto Condensed';
+  
+  font-family: var(--sans-font), sans-serif;
+  width: 100vw;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.large-text {
+  font-size: 2rem;
+  margin-bottom: 0;
+  color: white;
+  background-color: var(--green-color);
+  font-weight: bolder;
+  border-radius: 3em;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.top-banner {
+  position: relative;
+  padding: 0 4em 0 4em;
+}
+
+@media (max-width: 768px) {
+  .top-banner {
+    width: 100vw;
+    padding: 0 0.2em 0 0.2em;
+  }
+}
+
+.top-banner img {
+  width: 100%;
+}
+
+.top-banner h2 {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-weight: normal;
+  font-size: xx-large;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+  box-sizing: border-box;
+  padding: 1rem 2.5rem;
+  margin: 1rem 0;
+  border: 0.1rem solid black;
+  border-radius: 3rem;
+  background-color: #fff;
+}
+
+input[type="submit"] {
+  margin-top: 0.83em;
+  border-color: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+footer {
+  padding: 0.4em 4em 0.4em 4em;
+  text-align: center;
+}

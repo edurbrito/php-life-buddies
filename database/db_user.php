@@ -24,10 +24,4 @@
     $stmt->execute(array($email, password_hash($password, PASSWORD_DEFAULT, $options)));
   }
 
-  function getUser(){
-    if(isset($_SESSION['email']))
-      return $_SESSION['email'];
-    else
-      return NULL;
-  }
 ?>

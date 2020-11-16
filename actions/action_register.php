@@ -4,20 +4,18 @@
 
   $email = $_POST['email'];
   $password = $_POST['password'];
-
-  // Don't allow certain characters
-  if ( !preg_match ("/^[a-zA-Z0-9]@+$/", $email)) {
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Email can only contain letters and numbers!');
-    die(header('Location: ../pages/register.php'));
-  }
+  $name = $_POST['name'];
+  $phone_number = $_POST['phone'];
 
   try {
-    insertUser($email, $password);
+    insertUser($email, $password, $name, $phone_number);
     $_SESSION['email'] = $email;
+    $_SESSION['name'] = $name;
+    $_SESSION['phone_number'] = $phone_number;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
-    header('Location: ../pages/list.php');
+    header('Location: ../pages/adopt-list.php');
   } catch (PDOException $e) {
-    die($e->getMessage());
+    // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
     header('Location: ../pages/register.php');
   }

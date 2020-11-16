@@ -1,36 +1,30 @@
 <?php
 
-if(isset($_SESSION['username']))
-    die(header('Location: list.php'));
+session_start();
 
+if (isset($_SESSION['email']))
+    die(header('Location: ./profile.php'));
+
+include_once('../templates/tpl_common.php');
+
+draw_header("Login");
 ?>
 
-<!DOCTYPE html>
-<html>
-
-    <head>
-      <title>Login</title>
-      <meta charset="utf-8">
-      <link rel="stylesheet" href="../css/login.css">
-    </head>
-
-    <section id="login">
-    
-        <header><h2>Login</h2></header>
-
-        <form method="post" action="../actions/action_login.php">
+<section class="user-form">
+    <form method="post" action="../actions/action_login.php">
         <label for="email">Email:</label>
-            <br>
-            <input type="email" name="email" placeholder="example@email.com" required>
-            <label for="password">Password:</label>
-            <input type="password" name="password" placeholder="password" required>
-            <input type="submit" value="Login">
-        </form>
+        <input type="email" name="email" placeholder="example@email.com" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="password" required>
+        <input type="submit" value="Login" class="large-text">
+    </form>
 
-        <footer>
-            <p>Don't have an account? <a href="register.php">Signup!</a></p>
-        </footer>
 
-    </section>
+    <footer>
+        <p>Do you want to create an account? <a href="register.php">Sign Up!</a></p>
+    </footer>
+</section>
 
-</html>
+<?php
+draw_footer();
+?>

@@ -8,6 +8,9 @@
   if (checkUserPassword($email, $password)) {
     $_SESSION['email'] = $email;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');
+    $user = getUserInfo($email);
+    $_SESSION['name'] = $user['name'];
+    $_SESSION['phone_number'] = $user['phone_number'];
     header('Location: ../pages/profile.php');
   } else {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');

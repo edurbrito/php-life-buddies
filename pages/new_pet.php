@@ -1,3 +1,10 @@
+<?php 
+    include_once('../templates/tpl_common.php');
+
+    if(isset($_SESSION['email']))
+        $email = $_SESSION['email'];
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,6 +17,7 @@
     <body>
         <div id="topbar">
             <!-- Include à barra genérica -->
+            <?php draw_header($email); ?>
         </div>
 
         <div class="row">

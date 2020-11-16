@@ -1,12 +1,3 @@
-div#topbar {
-    background-color: green;
-    position: absolute;
-    width: 100%;
-    height: 151px;
-    left: 0px;
-    top: 0px;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -22,7 +13,7 @@ body {
 
 .column {
     flex: 50%;
-    margin-top: 151px;
+    margin: auto;
 }
 
 .column > img {
@@ -52,6 +43,18 @@ body {
     margin-right: 9em;
 }
 
+.pet-proposals button {
+    border: solid var(--green-color) 1px;
+    border-radius: 2rem;
+    background-color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-family: var(--sans-font);
+    font-weight: normal;
+    width: fit-content;
+    margin-right: 0.5rem;
+  }
+
 .pet-proposals > :nth-child(2) {
     color:  #ACC329;
 }
@@ -80,10 +83,13 @@ body {
 .pet-info {
     display: flex;
     justify-content: center;
-  }
+}
 
-.pet-info form,
-.pet-info form label:first-child {
+.pet-info label {
+    margin-left: 1em;
+}
+
+.pet-info form {
   display: flex;
   flex-direction: column;
   margin-block-start: 0.83em;

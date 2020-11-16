@@ -23,6 +23,7 @@ a {
   width: 60%;
   margin-right: auto;
   margin-left: auto;
+  text-align: center;
 }
 
 .top-banner {
@@ -63,6 +64,7 @@ input[type="password"] {
   border: 0.1rem solid black;
   border-radius: 3rem;
   background-color: #fff;
+  text-align: center;
 }
 
 input[type="submit"] {

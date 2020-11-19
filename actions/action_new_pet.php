@@ -11,11 +11,11 @@
   $location = $_POST['location'];
 
   try {
-    $pet = insertPet($name, $species, $age, $color, $location, $user);
+    $pet_id = insertPet($name, $species, $age, $color, $location, $user);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added new pet!');
-    header('Location: ../pages/adopt-list.php');
+    header("Location: ../pages/pet.php?pet_id={$pet_id}");
   } catch (PDOException $e) {
-    die($e->getMessage());
+    // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet!');
     header('Location: ../pages/new-pet.php');
   }

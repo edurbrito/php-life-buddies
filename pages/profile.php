@@ -1,18 +1,23 @@
 <?php
-    
-    session_start();
 
-    if(isset($_SESSION['email'])){
-        $email = $_SESSION['email'];
-        $name = $_SESSION['name'];
-        $phone_number = $_SESSION['phone_number'];
-    }
-    else
-        die(header('Location: ../index.php'));
-    
-    include_once('../templates/tpl_common.php');
+session_start();
 
-    draw_header("Profile", array('profile.css'));
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    $name = $_SESSION['name'];
+    $phone_number = $_SESSION['phone_number'];
+
+    include_once('../database/db_user.php');
+
+    $pets = getUserPets($email);
+    $favorites = getUserFavorites($email);
+    $proposals = getUserProposals($email);
+} else
+    die(header('Location: ../index.php'));
+
+include_once('../templates/tpl_common.php');
+
+draw_header("Profile", array('profile.css'));
 ?>
 
 <section class="profile-container">
@@ -20,42 +25,36 @@
         <ul>
             <li>
                 <h2 class="large-text">YOUR POSTS</h2>
-                <article class="profile-post">
-                    <img src="../css/images/dog.svg" />
-                    <h4>Pet Name, Age</h4>
-                    <button>View Post</button>
-                </article>
-                <article class="profile-post">
-                    <img src="../css/images/dog.svg" />
-                    <h4>Pet Name, Age</h4>
-                    <button>View Post</button>
-                </article>
+                <?php
+                foreach ($pets as $pet) { ?>
+                    <article class="profile-post">
+                        <img src="../css/images/dog.svg" />
+                        <h4><?= $pet['name'] ?>, <?= $pet['age'] ?></h4>
+                        <a href="/pages/pet.php?pet_id=<?= $pet['id'] ?>"><button>View Post</button></a>
+                    </article>
+                <?php } ?>
             </li>
             <li>
                 <h2 class="large-text">YOUR FAVORITES</h2>
-                <article class="profile-post">
-                    <img src="../css/images/dog.svg" />
-                    <h4>Pet Name, Age</h4>
-                    <button>View Post</button>
-                </article>
-                <article class="profile-post">
-                    <img src="../css/images/dog.svg" />
-                    <h4>Pet Name, Age</h4>
-                    <button>View Post</button>
-                </article>
+                <?php
+                foreach ($favorites as $pet) { ?>
+                    <article class="profile-post">
+                        <img src="../css/images/dog.svg" />
+                        <h4><?= $pet['name'] ?>, <?= $pet['age'] ?></h4>
+                        <a href="/pages/pet.php?pet_id=<?= $pet['id'] ?>"><button>View Post</button></a>
+                    </article>
+                <?php } ?>
             </li>
             <li>
                 <h2 class="large-text">YOUR PROPOSALS</h2>
-                <article class="profile-post">
-                    <img src="../css/images/dog.svg" />
-                    <h4>Pet Name, Age</h4>
-                    <button>View Post</button>
-                </article>
-                <article class="profile-post">
-                    <img src="../css/images/dog.svg" />
-                    <h4>Pet Name, Age</h4>
-                    <button>View Post</button>
-                </article>
+                <?php
+                foreach ($proposals as $pet) { ?>
+                    <article class="profile-post">
+                        <img src="../css/images/dog.svg" />
+                        <h4><?= $pet['name'] ?>, <?= $pet['age'] ?></h4>
+                        <a href="/pages/pet.php?pet_id=<?= $pet['id'] ?>"><button>View Post</button></a>
+                    </article>
+                <?php } ?>
             </li>
         </ul>
     </section>

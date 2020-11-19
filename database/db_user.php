@@ -47,4 +47,30 @@
     $stmt->execute(array($name, $phone_number, $newemail));
   }
 
+  function getUserPets($email) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Pet WHERE user = ?');
+    $stmt->execute(array($email));
+
+    $pets = $stmt->fetchAll();
+    return $pets;
+  }
+
+  function getUserFavorites($email) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Pet, Favorite WHERE Favorite.user = ?');
+    $stmt->execute(array($email));
+
+    $pets = $stmt->fetchAll();
+    return $pets;
+  }
+
+  function getUserProposals($email) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Pet, AdoptionProposal WHERE AdoptionProposal.user = ?');
+    $stmt->execute(array($email));
+
+    $pets = $stmt->fetchAll();
+    return $pets;
+  }
 ?>

@@ -58,21 +58,23 @@ CREATE TABLE AdoptionProposal(
 
     CONSTRAINT AdoptionProposalPK PRIMARY KEY (user,pet_id),
     CONSTRAINT AdoptionProposalUserFK FOREIGN KEY (user) REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT AdoptionProposalPetFK FOREIGN KEY (pet_id) REFERENCES Pet ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT AdoptionProposalPetFK FOREIGN KEY (pet_id) REFERENCES Pet ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT AdoptionProposalPetState CHECK (state == 0 || state == -1 || state == 1)
 );
 
 CREATE TABLE Question(
+    id                  INTEGER,
     user                VARCHAR(50) NOT NULL,
     pet_id              INTEGER NOT NULL,
     question            VARCHAR(100) NOT NULL,
 
-    CONSTRAINT QuestionPK PRIMARY KEY (user, pet_id),
+    CONSTRAINT QuestionPK PRIMARY KEY (id),
     CONSTRAINT QuestionUser FOREIGN KEY (user) REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT QuestionPetFK FOREIGN KEY (pet_id) REFERENCES Pet ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Favorite(
-    user               VARCHAR(50) NOT NULL,
+    user                VARCHAR(50) NOT NULL,
     pet_id              INTEGER NOT NULL,
 
     CONSTRAINT FavoritePK PRIMARY KEY (user, pet_id),

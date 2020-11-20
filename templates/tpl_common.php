@@ -4,14 +4,16 @@ if(!isset($_SESSION)) {
   session_start(); 
 } 
 
-if (isset($_SESSION['email'])){
-    $email = $_SESSION['email'];
-    $name = $_SESSION['name'];
+if (isset($_SESSION['email'])) {
+  $email = $_SESSION['email'];
+  $name = $_SESSION['name'];
+  $last_message = end($_SESSION['messages']);
+  $_SESSION['messages'] = array();
 }
 
 function draw_header($page_name, $css_links = NULL)
 {
-  global $email, $name;
+  global $email, $name, $last_message;
   /**
    * Draws the header for all pages. Receives an username
    * if the user is logged in in order to draw the logout
@@ -39,11 +41,18 @@ function draw_header($page_name, $css_links = NULL)
   </head>
 
   <body>
-
+    <?php if ($last_message != NULL) {
+      if ($last_message['type'] == 'success') {
+    ?>
+        <div id="snackbar" class="success"><?= $last_message['content'] ?></div>
+      <?php } else { ?>
+        <div id="snackbar" class="error"><?= $last_message['content'] ?></div>
+    <?php }
+    } ?>
     <header class="site-bar">
       <a href="/" class="logo"><img src="../css/images/dog.svg" /></a>
       <ul class="upper-ul">
-        <?php if ( $name != NULL) { ?>
+        <?php if ($name != NULL) { ?>
           <li>
             <a href="../pages/profile.php"><?= $name ?></a>
           </li>

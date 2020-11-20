@@ -18,7 +18,7 @@
   function getUserInfo($email) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM Costumer WHERE email = ?');
+    $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
     $stmt->execute(array($email));
 
     $user = $stmt->fetch();
@@ -32,7 +32,7 @@
 
     $stmt = $db->prepare('INSERT INTO Login VALUES(?, ?)');
     $stmt->execute(array($email, password_hash($password, PASSWORD_DEFAULT, $options)));
-    $stmt = $db->prepare('INSERT INTO Costumer VALUES(?, ?, ?)');
+    $stmt = $db->prepare('INSERT INTO User VALUES(?, ?, ?)');
     $stmt->execute(array($email, $name, $phone_number));
   }
 
@@ -43,8 +43,34 @@
 
     $stmt = $db->prepare('UPDATE Login SET email = ?, password = ? WHERE email = ?');
     $stmt->execute(array($newemail, password_hash($password, PASSWORD_DEFAULT, $options), $oldemail));
-    $stmt = $db->prepare('UPDATE Costumer SET name = ?, phone_number = ? WHERE email = ?');
+    $stmt = $db->prepare('UPDATE User SET name = ?, phone_number = ? WHERE email = ?');
     $stmt->execute(array($name, $phone_number, $newemail));
   }
 
+  function getUserPets($email) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Pet WHERE user = ?');
+    $stmt->execute(array($email));
+
+    $pets = $stmt->fetchAll();
+    return $pets;
+  }
+
+  function getUserFavorites($email) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Pet, Favorite WHERE Favorite.user = ?');
+    $stmt->execute(array($email));
+
+    $pets = $stmt->fetchAll();
+    return $pets;
+  }
+
+  function getUserProposals($email) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Pet, AdoptionProposal WHERE AdoptionProposal.user = ?');
+    $stmt->execute(array($email));
+
+    $pets = $stmt->fetchAll();
+    return $pets;
+  }
 ?>

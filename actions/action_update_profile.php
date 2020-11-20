@@ -2,8 +2,8 @@
   include_once('../includes/session.php');
   include_once('../database/db_user.php');
 
-  $newemail = $_POST['email'];
   $email = $_SESSION['email'];
+  $newemail = $_POST['email'];
   $oldpassword = $_POST['old-password'];
   $newpassword = $_POST['new-password'];
   $newname = $_POST['name'];

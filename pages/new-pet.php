@@ -19,24 +19,9 @@ draw_header("Send New Pet For Adoption", array('new_pet.css'));
             </li>
             <li>
                 <h2 class="large-text">PROPOSALS</h2>
-                <!-- Listar todas as propostas
-            <article class="pet-proposals">    
-                <h4>Maria Cantanhede</h4>
-                <button>Accept</button>
-                <button>Decline</button>
-            </article> -->
             </li>
             <li>
                 <h2 class="large-text">QUESTIONS</h2>
-                <!-- Listar todos os comentários -->
-                <!-- <article class="pet-comments">
-                <h4><i class="fas fa-angle-right"></i> Maria Cantanhede</h4>
-                <p>Hello, is this bird single? I am interested in a buddy for my trips to Mexico!!</p>
-            </article>
-            <article class="pet-comments">
-                <h4><i class="fas fa-angle-right"></i> Manel Ferreira</h4>
-                <p>No, he isn't! You must stay home Maria!</p>
-            </article> -->
                 <div class="questions-box">
                     <input type="text" name="send_question">
                     <i class="fas fa-arrow-circle-up fa-2x"></i>

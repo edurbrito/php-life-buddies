@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if(!isset($_SESSION)) { 
+  session_start(); 
+} 
 
 if (isset($_SESSION['email'])){
     $email = $_SESSION['email'];
@@ -29,7 +31,7 @@ function draw_header($page_name, $css_links = NULL)
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bar.css">
     <?php 
-      foreach($css_links as $css) {
+      foreach((array)$css_links as $css) {
         echo '<link rel="stylesheet" href="../css/' . $css . '">';
       }
     ?>

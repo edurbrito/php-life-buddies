@@ -5,14 +5,16 @@ session_start();
 if (!isset($_SESSION['email']))
     die(header('Location: ./login.php'));
 
+$msg=!empty($_SESSION['msg'])?$_SESSION['msg']:'';
+
 include_once('../templates/tpl_common.php');
 
 draw_header("Send New Pet For Adoption", array('new_pet.css'));
 ?>
 
 <section class="pet-container">
-    <section class="pet-lists">
-        <ul>
+    <section class="add-pet-image">
+        <!--<ul>
             <li>
                 <img src="../images/canary.png" alt="A yellow canary" width="200" height="180">
                 <i class="far fa-star fa-2x"></i>
@@ -27,7 +29,14 @@ draw_header("Send New Pet For Adoption", array('new_pet.css'));
                     <i class="fas fa-arrow-circle-up fa-2x"></i>
                 </div>
             </li>
-        </ul>
+        </ul>-->
+        <form action="../actions/action_upload_image.php" method="post" enctype="multipart/form-data">
+            <h2 class="large-text">Pet Image</h2>
+            <p><?= "Please select a file" ?></p>
+            <label for="pet-image" class="custom-file-upload"></label>
+            <input type="file" name="pet-image" id="pet-image">
+            <input type="submit" value="Upload" name="submit" class="large-text">
+        </form>
     </section>
 
     <section class="pet-info">
@@ -37,9 +46,9 @@ draw_header("Send New Pet For Adoption", array('new_pet.css'));
             <label for="species">Species:</label>
             <input type="text" name="species" placeholder="Bird" required>
             <label for="age">Age:</label>
-            <input type="text" name="age" placeholder="1 year" required>
+            <input type="text" name="age" placeholder="1 year">
             <label for="color">Color:</label>
-            <input type="text" name="color" placeholder="Blue" required>
+            <input type="text" name="color" placeholder="Blue">
             <label for="location">Location:</label>
             <input type="text" name="location" placeholder="Down the Street" required>
             <input type="submit" value="Submit" class="large-text">

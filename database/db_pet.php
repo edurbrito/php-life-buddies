@@ -38,7 +38,7 @@
     $users = $stmt->fetch();
 
     if($user != $users['user'] && $user != $users['adoptedBy'])
-        throw new PDOException();
+      throw new PDOException();
 
     $stmt = $db->prepare('INSERT INTO Photo VALUES(?, ?)');
     $stmt->execute(array($pet_id, $photo));

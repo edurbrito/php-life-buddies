@@ -3,6 +3,7 @@
 }
 
 .pet-lists,
+.add-pet-image,
 .pet-info {
   width: 50%;
 }
@@ -14,6 +15,7 @@
   }
 
   .pet-lists,
+  .add-pet-image,
   .pet-info,
   .pet-info form {
     width: 100vw !important;
@@ -63,6 +65,44 @@
   cursor: pointer;
   font-family: var(--sans-font);
   font-weight: normal;
+}
+
+.add-pet-image {
+  display: flex;
+  justify-content: center;
+}
+
+.add-pet-image p {
+  text-align: center;
+}
+
+.add-pet-image form,
+.add-pet-image form label:first-child {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 0.83em;
+  margin-inline-start: 0px;
+  width: 60%;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.add-pet-image input[type="submit"] {
+  background: #8f8d8d;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
 }
 
 .pet-info {

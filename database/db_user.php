@@ -8,7 +8,7 @@
   function checkUserPassword($email, $password) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM Login WHERE email = ?');
+    $stmt = $db->prepare('SELECT * FROM LoginData WHERE email = ?');
     $stmt->execute(array($email));
 
     $user = $stmt->fetch();
@@ -30,7 +30,7 @@
 
     $options = ['cost' => 12];
 
-    $stmt = $db->prepare('INSERT INTO Login VALUES(?, ?)');
+    $stmt = $db->prepare('INSERT INTO LoginData VALUES(?, ?)');
     $stmt->execute(array($email, password_hash($password, PASSWORD_DEFAULT, $options)));
     $stmt = $db->prepare('INSERT INTO User VALUES(?, ?, ?)');
     $stmt->execute(array($email, $name, $phone_number));
@@ -41,7 +41,7 @@
 
     $options = ['cost' => 12];
 
-    $stmt = $db->prepare('UPDATE Login SET email = ?, password = ? WHERE email = ?');
+    $stmt = $db->prepare('UPDATE LoginData SET email = ?, password = ? WHERE email = ?');
     $stmt->execute(array($newemail, password_hash($password, PASSWORD_DEFAULT, $options), $oldemail));
     $stmt = $db->prepare('UPDATE User SET name = ?, phone_number = ? WHERE email = ?');
     $stmt->execute(array($name, $phone_number, $newemail));

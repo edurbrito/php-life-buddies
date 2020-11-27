@@ -34,7 +34,7 @@ draw_header("Send New Pet For Adoption", array('new_pet.css'));
             <h2 class="large-text">Pet Image</h2>
             <p><?= "Please select a file" ?></p>
             <label for="pet-image" class="custom-file-upload"></label>
-            <input type="file" name="pet-image" id="pet-image">
+            <input type="file" name="pet-image[]" id="pet-image" multiple>
             <input type="submit" value="Upload" name="submit" class="large-text">
         </form>
     </section>

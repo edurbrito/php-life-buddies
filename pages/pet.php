@@ -17,10 +17,9 @@ $_SESSION['curr_pet'] = $pet;
 
 include_once('../templates/tpl_common.php');
 
-draw_header("Pet Profile", array('new_pet.css'));
+draw_header("Pet Profile", array('pet.css'));
 ?>
-
-<section class="pet-container">
+<section class="pet-container" data-id="<?=$pet_id?>">
     <section class="pet-lists">
         <ul>
             <li>
@@ -28,7 +27,7 @@ draw_header("Pet Profile", array('new_pet.css'));
                 <form action="../actions/action_favorite_pet.php" method="post">
                     <input type="submit" value="Favorite"/>
                 </form>
-                <i class="far fa-star fa-2x"></i>
+                <i class="far fa-star fa-2x" id="favorite"></i>
             </li>
             <li>
                 <h2 class="large-text">PROPOSALS</h2>
@@ -66,7 +65,7 @@ draw_header("Pet Profile", array('new_pet.css'));
                 <form class="questions-box" method="post" action="../actions/action_question_pet.php">
                     <input type="text" name="question" placeholder="Your Message" required>
                     <input type="submit">
-                    <i class="fas fa-arrow-circle-up fa-2x"></i>
+                    <i class="fas fa-arrow-circle-up fa-2x" id="question"></i>
                 </form>
             </li>
         </ul>

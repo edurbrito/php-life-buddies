@@ -26,6 +26,10 @@ a {
   text-align: center;
 }
 
+input.large-text, button.large-text {
+  width: auto;
+}
+
 .top-banner {
   position: relative;
   padding: 0 4em 0 4em;
@@ -57,7 +61,8 @@ a {
 input[type="text"],
 input[type="tel"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+form p {
   box-sizing: border-box;
   padding: 1rem 2.5rem;
   margin: 1rem 0;

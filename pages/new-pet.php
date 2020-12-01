@@ -1,11 +1,9 @@
 <?php
 
-session_start();
+include_once('../templates/tpl_common.php');
 
 if (!isset($_SESSION['email']))
     die(header('Location: ./login.php'));
-
-include_once('../templates/tpl_common.php');
 
 draw_header("Send New Pet For Adoption", array('new_pet.css'));
 ?>

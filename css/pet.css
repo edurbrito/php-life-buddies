@@ -82,6 +82,33 @@
   margin-inline-start: 0px;
 }
 
+.pet-comments {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1rem;
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.pet-comment {
+  line-height: 0;
+  text-align: left;
+}
+
+.pet-comment .fa-angle-right {
+  position: relative;
+}
+
+.pet-comment .fa-angle-right * {
+  padding-left: 0.4rem;
+  font-weight: bold;
+  font-family: var(--sans-font);
+}
+
 .questions-box {
   width: 100%;
   margin-left: auto;
@@ -95,6 +122,10 @@
   top: 0.2em;
 }
 
-#favorite {
+.fa-star {
+  color: #acc329;
+}
+
+#favorite, #question {
   cursor: pointer;
 }

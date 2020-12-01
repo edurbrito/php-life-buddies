@@ -3,24 +3,3 @@ function encodeForAjax(data) {
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
     }).join('&')
   }
-
-let favorite = document.querySelector("#favorite")
-favorite.addEventListener('click', () => {
-    let pet_id = document.querySelector('.pet-container').getAttribute('data-id');
-    let request = new XMLHttpRequest()
-    request.onreadystatechange = function() {
-        if (request.readyState == XMLHttpRequest.DONE) {
-            console.log(request.response)
-            let response = JSON.parse(request.response);
-            if(response.type == 'success'){
-                if(response.action == 'added') favorite.classList = 'fas fa-star fa-2x';
-                else if(response.action == 'removed') favorite.classList = 'far fa-star fa-2x';
-                console.log(response)
-            }
-        }
-    }
-    request.open("POST", "../actions/action_favorite_pet.php", true)
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')    
-    request.send(encodeForAjax({'pet_id': pet_id}))
-
-})

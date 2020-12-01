@@ -10,12 +10,14 @@
   }
 
   try {
-    $pet_id = $POST['pet_id'];
-    $action = addPetToFavorites($email, $pet_id);
-    if($action == 'added' && $pet_id != NULL)
-      echo '{"type": "success", "action": "added" }';
-    else
-      echo '{"type": "success", "action": "removed" }';
+    $pet_id = json_decode(file_get_contents('php://input'), true)['pet_id'];
+    if($pet_id != NULL){
+      $action = addPetToFavorites($email, $pet_id);
+      echo '{"type": "success", "action": "' . $action . '" }';
+    }
+    else{
+      throw new PDOException("No id specified");
+    }
   } catch (PDOException $e) {
     // die($e->getMessage());
     echo '{"type": "error", "content": "Failed to add pet to favorites!"}';

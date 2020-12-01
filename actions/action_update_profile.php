@@ -5,7 +5,7 @@
   $email = $_SESSION['email'];
   $newemail = $_POST['email'];
   $oldpassword = $_POST['old-password'];
-  $newpassword = $_POST['new-password'];
+  $newpassword = $_POST['new-password'] != NULL ? $_POST['new-password'] : $oldpassword;
   $newname = $_POST['name'];
   $newphone = $_POST['phone'];
 
@@ -18,7 +18,7 @@
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Info Updated!');
       }
       else{
-        throw new PDOException();
+        throw new PDOException("Wrong Password");
       }
 
   } catch (PDOException $e) {

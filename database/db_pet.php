@@ -30,10 +30,10 @@
     return $pet;
   }
 
-  function addPetPhoto($user, $pet_id, $photo){
+  function addPetPhoto($user, $pet_info, $photo){
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT user, adoptedBy FROM Pet WHERE id = ?');
-    $stmt->execute(array($pet_id));
+    $stmt->execute(array($pet_info["id"]));
 
     $users = $stmt->fetch();
 
@@ -41,7 +41,51 @@
       throw new PDOException();
 
     $stmt = $db->prepare('INSERT INTO Photo VALUES(?, ?)');
-    $stmt->execute(array($pet_id, $photo));
+    $stmt->execute(array($pet_info["id"], $photo));
+  }
+
+  function addAllPetPhotos($user, $pet_info) {
+    $uploadTo = "../images/";
+    $allowFileType = array('jpg','png','jpeg', 'JPG', 'PNG', 'JPEG');
+
+    $total = count($_FILES['pet-image']['name']);
+
+    $error = false;
+
+    for( $i=0 ; $i < $total ; $i++ ) {
+      $fileName = $_FILES['pet-image']['name'][$i];
+      $tempPath = $_FILES['pet-image']["tmp_name"][$i];
+
+      $basename = basename($fileName);
+      $originalPath = $uploadTo.$basename;
+      $fileType = pathinfo($originalPath, PATHINFO_EXTENSION);
+
+      if(!empty($fileName)) {
+  
+        if(in_array($fileType, $allowFileType)) {
+          if (!$error) {
+            $msg = array('type' => 'success', 'content' => $fileName.' was uploaded successfully');
+          }
+        }
+        else {
+          $msg = array('type' => 'error', 'content' => '.'.$fileType.' File type not allowed ('.$fileName.')');
+          $error = true;
+        }
+      }
+
+      $_SESSION['messages'][] = $msg;
+
+      // Upload file to server
+      try {
+        move_uploaded_file($tempPath, $originalPath);
+        addPetPhoto($user, $pet_info, $originalPath);
+      }
+      catch(Exception $e) {
+        continue;
+      }
+    }
+
+    $_SESSION['messages'][] = $msg;
   }
 
   function addPetToFavorites($user, $pet_id){

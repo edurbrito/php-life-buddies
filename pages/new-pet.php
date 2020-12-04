@@ -17,7 +17,8 @@
             <h2 class="large-text">Pet Images</h2>
             <p><?= "Please select a file" ?></p>
             <label for="pet-image" class="custom-file-upload"></label>
-            <input type="file" name="pet-image[]" id="pet-image" multiple>
+            <input type="file" name="pet-image[]" id="pet-image" onchange="previewImages(this);" multiple>
+            <section id="images-preview"></section>
         </section>
 
         <section class="pet-info">

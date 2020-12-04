@@ -83,6 +83,11 @@
   width: 60%;
 }
 
+#images-preview {
+  margin: 10%;
+  text-align: center;
+}
+
 input[type="file"] {
   display: none;
 }

@@ -5,7 +5,7 @@
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  if (checkUserPassword($email, $password)) {
+  if (checkUserPassword($email, $password) && validate_user("SomeName", $email, "912345678", $password)) {
     $_SESSION['email'] = $email;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');
     $user = getUserInfo($email);

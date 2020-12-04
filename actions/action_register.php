@@ -8,6 +8,11 @@
   $phone_number = $_POST['phone'];
 
   try {
+
+    if(!validate_user($name, $email, $phone_number, $password)){
+      throw new PDOException("Matching errors in one of the inputs");
+    }
+
     insertUser($email, $password, $name, $phone_number);
     $_SESSION['email'] = $email;
     $_SESSION['name'] = $name;

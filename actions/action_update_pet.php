@@ -6,12 +6,20 @@
   $pet = $_POST['pet_id'];
 
   try {
+      if(!is_id($pet)){
+        throw new PDOException('Invalid Pet id');
+      }
+
       if(getPetOwner($pet) == $email){
-        $name = $_POST['name'];
-        $species = $_POST['species'];
-        $age = $_POST['age'];
-        $color = $_POST['color'];
-        $location = $_POST['location'];
+        $name = clean_text($_POST['name']);
+        $species = clean_text($_POST['species']);
+        $age = clean_text($_POST['age']);
+        $color = clean_text($_POST['color']);
+        $location = clean_text($_POST['location']);
+
+        if(!validate_pet($name, $species, $age, $color, $location))
+          return new PDOException('Matching error in on of the inputs');
+
         updatePet($pet, $name, $species, $age, $color, $location, $email);
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Pet Updated!');
       }

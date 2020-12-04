@@ -10,6 +10,11 @@
   $newphone = $_POST['phone'];
 
   try {
+
+      if(!validate_user($newname, $newemail, $newphone, $newpassword)){
+        throw new PDOException("Matching errors in one of the inputs");
+      }
+
       if(checkUserPassword($email,$oldpassword)){
         updateUser($email, $newemail, $newpassword, $newname, $newphone);
         $_SESSION['email'] = $newemail;

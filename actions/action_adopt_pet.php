@@ -7,6 +7,11 @@
   $pet_id = $_POST['pet_id'];
 
   try {
+
+    if(!is_id($pet_id)){
+      throw new PDOException('Invalid Pet id');
+    }
+
     $pet = getPetInfo($pet_id);
 
     if($email == NULL){

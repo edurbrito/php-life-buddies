@@ -4,6 +4,7 @@ body {
 
   font-family: var(--sans-font), sans-serif;
   width: 100vw;
+  max-width: 100%;
   margin: 0;
 }
 
@@ -34,7 +35,12 @@ a {
 @media (max-width: 768px) {
   .top-banner {
     width: 100vw;
+    max-width: 100%;
     padding: 0 0.2em 0 0.2em;
+  }
+
+  body {
+    max-width: 100%;
   }
 }
 

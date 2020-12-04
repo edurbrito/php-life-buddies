@@ -8,8 +8,8 @@
   width: 50%;
 }
 
-@media (max-width: 768px) {
-  .pet-container {
+@media all and (max-width: 768px) {
+  .pet-container form {
     width: 100vw !important;
     flex-direction: column;
   }
@@ -23,6 +23,15 @@
   .pet-info {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .pet-info label, .pet-info input {
+    max-width: 90%;
+  }
+
+  #images-preview img {
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -84,8 +93,12 @@
 }
 
 #images-preview {
-  margin: 10%;
   text-align: center;
+}
+
+#images-preview img {
+  margin: 2rem;
+  margin-bottom: 0;
 }
 
 input[type="file"] {
@@ -93,20 +106,27 @@ input[type="file"] {
 }
 
 .custom-file-upload {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
-  width: 50%;
-  margin: 0 auto;
+  font-size: 2rem;
+  margin-bottom: 0;
+  color: white;
+  background-color: #8f8d8d;
+  font-weight: bolder;
+  border-radius: 3em;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.custom-file-upload:before{
+  content: 'Upload';
 }
 
 .pet-info {
   display: flex;
   justify-content: center;
-}
-
-.pet-info {
   width: 30%;
 }
 

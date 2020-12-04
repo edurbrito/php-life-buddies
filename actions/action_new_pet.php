@@ -11,6 +11,10 @@
   $location = $_POST['location'];
 
   try {
+
+    if(!validate_pet($name, $species, $age, $color, $location))
+      return new PDOException('Matching error in on of the inputs');
+
     $pet_info = insertPet($name, $species, $age, $color, $location, $user);
     addAllPetPhotos($user, $pet_info);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added new pet!');

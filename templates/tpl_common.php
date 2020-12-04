@@ -7,9 +7,10 @@ if(!isset($_SESSION)) {
 if (isset($_SESSION['email'])) {
   $email = $_SESSION['email'];
   $name = $_SESSION['name'];
-  $last_message = end($_SESSION['messages']);
-  $_SESSION['messages'] = array();
 }
+
+$last_message = end($_SESSION['messages']);
+$_SESSION['messages'] = array();
 
 function draw_header($page_name, $css_links = NULL, $js_links = NULL)
 {

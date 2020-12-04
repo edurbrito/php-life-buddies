@@ -23,10 +23,15 @@
   }
 
   try {
+
+    if(!is_id($pet)){
+      throw new PDOException('Invalid Pet id');
+    }
+
     setPetAdoptState($adopter, $pet['id'], $state);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added adopter to pet!');
   } catch (PDOException $e) {
-    die($e->getMessage());
+    // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet adopter!');
   }
   header("Location: ../pages/pet.php?pet_id={$pet['id']}");

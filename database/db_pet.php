@@ -174,3 +174,25 @@
 
     return $stmt->fetchAll();
   }
+
+  function clean_text($old_text) {
+    return preg_replace('/[^\w\d\s\.!,\?]/', '', $old_text);
+  }
+
+  function is_id($id){
+    return preg_match("/^\d+$/", $id);
+  }
+
+  function is_name($name){
+    return preg_match("/^[a-zA-Z-' ]*$/", $name);
+  }
+
+  function is_alphanumeric($name){
+    return preg_match("/^[a-zA-Z\d ]+$/", $name);
+  }
+
+  function validate_pet($name, $species, $age, $color, $location){
+    return is_name($name) && is_name($species) && is_name($color) && is_alphanumeric($age) && is_alphanumeric($location);
+  }
+
+?>

@@ -1,27 +1,37 @@
-.pet-container {
+.pet-container form {
   display: flex;
 }
 
 .pet-lists,
+.add-pet-image,
 .pet-info {
   width: 50%;
 }
 
-@media (max-width: 768px) {
-  .pet-container {
+@media all and (max-width: 768px) {
+  .pet-container form {
     width: 100vw !important;
     flex-direction: column;
   }
 
   .pet-lists,
-  .pet-info,
-  .pet-info form {
+  .add-pet-image,
+  .pet-info {
     width: 100vw !important;
   }
 
-  .pet-info form {
+  .pet-info {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .pet-info label, .pet-info input {
+    max-width: 90%;
+  }
+
+  #images-preview img {
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -65,17 +75,63 @@
   font-weight: normal;
 }
 
-.pet-info {
+.add-pet-image {
   display: flex;
-  justify-content: center;
 }
 
-.pet-info form {
+.add-pet-image p {
+  text-align: center;
+}
+
+.add-pet-image ,
+.add-pet-image label:first-child {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 0.83em;
+  margin-inline-start: 0px;
   width: 60%;
 }
 
-.pet-info form,
-.pet-info form label:first-child {
+#images-preview {
+  text-align: center;
+}
+
+#images-preview img {
+  margin: 2rem;
+  margin-bottom: 0;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  font-size: 2rem;
+  margin-bottom: 0;
+  color: white;
+  background-color: #8f8d8d;
+  font-weight: bolder;
+  border-radius: 3em;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.custom-file-upload:before{
+  content: 'Upload';
+}
+
+.pet-info {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.pet-info,
+.pet-info label:first-child {
   display: flex;
   flex-direction: column;
   margin-block-start: 0.83em;

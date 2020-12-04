@@ -11,7 +11,8 @@
   $location = $_POST['location'];
 
   try {
-    $pet_id = insertPet($name, $species, $age, $color, $location, $user);
+    $pet_info = insertPet($name, $species, $age, $color, $location, $user);
+    addAllPetPhotos($user, $pet_info);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added new pet!');
     header("Location: ../pages/pet.php?pet_id={$pet_id}");
   } catch (PDOException $e) {

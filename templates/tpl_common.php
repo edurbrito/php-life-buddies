@@ -38,6 +38,7 @@ function draw_header($page_name, $css_links = NULL)
       }
     ?>
     <script src="../js/main.js" defer></script>
+    <script src="../js/new-pet.js" defer></script>
   </head>
 
   <body>

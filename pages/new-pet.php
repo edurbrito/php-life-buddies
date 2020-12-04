@@ -3,12 +3,12 @@
 
     if (!isset($_SESSION['email']))
         die(header('Location: ./login.php'));
+        
+    include_once('../templates/tpl_common.php');
 
     $msg=!empty($_SESSION['msg'])?$_SESSION['msg']:'';
 
-    include_once('../templates/tpl_common.php');
-
-    draw_header("Send New Pet For Adoption", array('new_pet.css'));
+draw_header("Send New Pet For Adoption", array('new_pet.css'));
 ?>
 
 <section class="pet-container">    

@@ -11,9 +11,9 @@ if (isset($_SESSION['email'])) {
   $_SESSION['messages'] = array();
 }
 
-function draw_header($page_name, $css_links = NULL)
+function draw_header($page_name, $css_links = NULL, $js_links = NULL)
 {
-  global $email, $name, $last_message;
+  global $name, $last_message;
   /**
    * Draws the header for all pages. Receives an username
    * if the user is logged in in order to draw the logout
@@ -38,7 +38,15 @@ function draw_header($page_name, $css_links = NULL)
       }
     ?>
     <script src="../js/main.js" defer></script>
+<<<<<<< HEAD
     <script src="../js/new-pet.js" defer></script>
+=======
+    <?php 
+      foreach((array)$js_links as $js) {
+        echo '<script src="../js/' . $js . '" defer></script>';
+      }
+    ?>
+>>>>>>> favorites
   </head>
 
   <body>

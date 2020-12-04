@@ -58,7 +58,7 @@
 
   function getUserFavorites($email) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM Pet, Favorite WHERE Favorite.user = ?');
+    $stmt = $db->prepare('SELECT * FROM Pet, Favorite WHERE Favorite.user = ? AND Pet.id = Favorite.pet_id');
     $stmt->execute(array($email));
 
     $pets = $stmt->fetchAll();
@@ -67,7 +67,7 @@
 
   function getUserProposals($email) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM Pet, AdoptionProposal WHERE AdoptionProposal.user = ?');
+    $stmt = $db->prepare('SELECT * FROM Pet, AdoptionProposal WHERE AdoptionProposal.user = ? AND Pet.id = AdoptionProposal.pet_id');
     $stmt->execute(array($email));
 
     $pets = $stmt->fetchAll();

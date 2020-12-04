@@ -30,6 +30,16 @@
     return $pet;
   }
 
+  function getPetOwner($pet_id) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT user FROM Pet WHERE id = ?');
+    $stmt->execute(array($pet_id));
+
+    $pet = $stmt->fetch();
+    return $pet['user'];
+  }
+
   function addPetPhoto($user, $pet_info, $photo){
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT user, adoptedBy FROM Pet WHERE id = ?');
@@ -88,14 +98,25 @@
     $_SESSION['messages'][] = $msg;
   }
 
+  function isPetFavorite($pet_id, $email) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Favorite WHERE user = ? AND pet_id = ? ');
+    $stmt->execute(array($email, $pet_id));
+    
+    $pet = $stmt->fetch();
+    return $pet != NULL;
+  }
+
   function addPetToFavorites($user, $pet_id){
     $db = Database::instance()->db();
     try {
       $stmt = $db->prepare('INSERT INTO Favorite VALUES(?, ?)');
       $stmt->execute(array($user, $pet_id));
+      return 'added';
     } catch (PDOException $e) {
       $stmt = $db->prepare('DELETE FROM Favorite WHERE user = ? AND pet_id = ?');
       $stmt->execute(array($user, $pet_id));
+      return 'removed';
     }
   }
 
@@ -139,7 +160,7 @@
   function getPetQuestions($pet_id) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT U.name, Q.question FROM User AS U, Question AS Q WHERE U.email = Q.user AND Q.pet_id = ?');
+    $stmt = $db->prepare('SELECT U.email, U.name, Q.question FROM User AS U, Question AS Q WHERE U.email = Q.user AND Q.pet_id = ?');
     $stmt->execute(array($pet_id));
 
     $questions = $stmt->fetchAll();

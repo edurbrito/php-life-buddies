@@ -38,15 +38,11 @@ function draw_header($page_name, $css_links = NULL, $js_links = NULL)
       }
     ?>
     <script src="../js/main.js" defer></script>
-<<<<<<< HEAD
-    <script src="../js/new-pet.js" defer></script>
-=======
     <?php 
       foreach((array)$js_links as $js) {
         echo '<script src="../js/' . $js . '" defer></script>';
       }
     ?>
->>>>>>> favorites
   </head>
 
   <body>

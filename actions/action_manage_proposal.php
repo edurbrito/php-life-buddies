@@ -25,12 +25,12 @@
   try {
 
     if(!is_id($pet)){
-      throw new PDOException('Invalid Pet id');
+      throw new Exception('Invalid Pet id');
     }
 
     setPetAdoptState($adopter, $pet['id'], $state);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added adopter to pet!');
-  } catch (PDOException $e) {
+  } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet adopter!');
   }

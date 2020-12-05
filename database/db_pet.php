@@ -113,7 +113,7 @@
       $stmt = $db->prepare('INSERT INTO Favorite VALUES(?, ?)');
       $stmt->execute(array($user, $pet_id));
       return 'added';
-    } catch (PDOException $e) {
+    } catch (Exception $e) {
       $stmt = $db->prepare('DELETE FROM Favorite WHERE user = ? AND pet_id = ?');
       $stmt->execute(array($user, $pet_id));
       return 'removed';

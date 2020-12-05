@@ -13,13 +13,13 @@
   try {
 
     if(!validate_pet($name, $species, $age, $color, $location))
-      return new PDOException('Matching error in on of the inputs');
+      throw new Exception('Matching error in on of the inputs');
 
     $pet_info = insertPet($name, $species, $age, $color, $location, $user);
     addAllPetPhotos($user, $pet_info);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added new pet!');
     header("Location: ../pages/pet.php?pet_id={$pet_id}");
-  } catch (PDOException $e) {
+  } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet!');
     header('Location: ../pages/new-pet.php');

@@ -7,7 +7,7 @@
 
   try {
       if(!is_id($pet)){
-        throw new PDOException('Invalid Pet id');
+        throw new Exception('Invalid Pet id');
       }
 
       if(getPetOwner($pet) == $email){
@@ -18,7 +18,7 @@
         $location = clean_text($_POST['location']);
 
         if(!validate_pet($name, $species, $age, $color, $location))
-          return new PDOException('Matching error in on of the inputs');
+          throw new Exception('Matching error in on of the inputs');
 
         updatePet($pet, $name, $species, $age, $color, $location, $email);
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Pet Updated!');
@@ -27,7 +27,7 @@
         throw new PDOException('User Does Not Own This Pet');
       }
 
-  } catch (PDOException $e) {
+  } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update pet!');
   }

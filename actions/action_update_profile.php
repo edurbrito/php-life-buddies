@@ -12,7 +12,7 @@
   try {
 
       if(!validate_user($newname, $newemail, $newphone, $newpassword)){
-        throw new PDOException("Matching errors in one of the inputs");
+        throw new Exception("Matching errors in one of the inputs");
       }
 
       if(checkUserPassword($email,$oldpassword)){
@@ -26,7 +26,7 @@
         throw new PDOException("Wrong Password");
       }
 
-  } catch (PDOException $e) {
+  } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update!');
   }

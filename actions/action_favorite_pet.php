@@ -13,7 +13,7 @@
     $pet_id = json_decode(file_get_contents('php://input'), true)['pet_id'];
 
     if(!is_id($pet_id)){
-      throw new PDOException('Invalid Pet id');
+      throw new Exception('Invalid Pet id');
     }
 
     if($pet_id != NULL){
@@ -23,7 +23,7 @@
     else{
       throw new PDOException("No id specified");
     }
-  } catch (PDOException $e) {
+  } catch (Exception $e) {
     // die($e->getMessage());
     echo '{"type": "error", "content": "Failed to add pet to favorites!"}';
   }

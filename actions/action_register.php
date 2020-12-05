@@ -10,7 +10,7 @@
   try {
 
     if(!validate_user($name, $email, $phone_number, $password)){
-      throw new PDOException("Matching errors in one of the inputs");
+      throw new Exception("Matching errors in one of the inputs");
     }
 
     insertUser($email, $password, $name, $phone_number);
@@ -19,7 +19,7 @@
     $_SESSION['phone_number'] = $phone_number;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
     header('Location: ../pages/adopt-list.php');
-  } catch (PDOException $e) {
+  } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
     header('Location: ../pages/register.php');

@@ -1,14 +1,10 @@
 <?php
-    session_start();
+    include_once('../templates/tpl_common.php');
 
     if (!isset($_SESSION['email']))
         die(header('Location: ./login.php'));
 
-    include_once('../templates/tpl_common.php');
-
-    $msg=!empty($_SESSION['msg'])?$_SESSION['msg']:'';
-
-draw_header("Send New Pet For Adoption", array('new_pet.css'), array('new-pet.js'));
+    draw_header("Send New Pet For Adoption", array('new_pet.css'), array('new-pet.js'));
 ?>
 
 <section class="pet-container">    

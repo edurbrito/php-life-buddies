@@ -14,12 +14,12 @@
   try {
 
     if(!is_id($pet)){
-      throw new PDOException('Invalid Pet id');
+      throw new Exception('Invalid Pet id');
     }
 
     addPetQuestion($email, $pet, $question);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added Question to Pet!');
-  } catch (PDOException $e) {
+  } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add question to pet!');
   }

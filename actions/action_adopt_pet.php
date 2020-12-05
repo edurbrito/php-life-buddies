@@ -9,7 +9,7 @@
   try {
 
     if(!is_id($pet_id)){
-      throw new PDOException('Invalid Pet id');
+      throw new Exception('Invalid Pet id');
     }
 
     $pet = getPetInfo($pet_id);
@@ -24,7 +24,7 @@
 
     addPetAdoptionProposal($email, $pet_id);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added proposal to pet!');
-  } catch (PDOException $e) {
+  } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet proposal!');
   }

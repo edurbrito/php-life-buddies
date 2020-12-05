@@ -2,6 +2,12 @@
   include_once('../includes/session.php');
   include_once('../database/db_pet.php');
 
+  $csrf = $_POST['csrf'];
+  if($csrf != $_SESSION['csrf']){
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet adopter!');
+    die(header('Location: ' . $_SERVER['HTTP_REFERER']));
+  }
+
   if(!isset($_SESSION['email'])){
     die(header("Location: ../pages/login.php"));
   }

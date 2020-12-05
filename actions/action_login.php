@@ -2,6 +2,12 @@
   include_once('../includes/session.php');
   include_once('../database/db_user.php');
 
+  $csrf = $_POST['csrf'];
+  if($csrf != $_SESSION['csrf']){
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');
+    die(header('Location: ' . $_SERVER['HTTP_REFERER']));
+  }
+
   $email = $_POST['email'];
   $password = $_POST['password'];
 

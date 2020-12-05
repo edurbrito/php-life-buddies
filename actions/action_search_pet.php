@@ -2,6 +2,10 @@
   include_once('../includes/session.php');
   include_once('../database/db_pet.php');
 
+  $csrf = $_GET['csrf'];
+  if($csrf != $_SESSION['csrf'])
+    die("{}");
+
   $matchType = clean_text($_GET['match_type']) == "on" ? 1 : 0;
   $name = clean_text($_GET['name']);
   $species = clean_text($_GET['species']);

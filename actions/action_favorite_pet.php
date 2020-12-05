@@ -1,13 +1,12 @@
 <?php
+  include_once('../includes/session.php');
   include_once('../database/db_pet.php');
 
-  session_start();
+  if(!isset($_SESSION['email'])){
+    die('{"type": "error", "content": "Failed to add pet to favorites!"}');
+  }
 
   $email = $_SESSION['email'];
-
-  if($email == NULL){
-    die(header("Location: ../pages/login.php"));
-  }
 
   try {
     $pet_id = json_decode(file_get_contents('php://input'), true)['pet_id'];

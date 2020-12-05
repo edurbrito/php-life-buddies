@@ -2,6 +2,10 @@
   include_once('../includes/session.php');
   include_once('../database/db_user.php');
 
+  if(!isset($_SESSION['email'])){
+    die(header("Location: ../pages/login.php"));
+  }
+
   $email = $_SESSION['email'];
   $newemail = $_POST['email'];
   $oldpassword = $_POST['old-password'];

@@ -1,6 +1,10 @@
 <?php
-  session_start();
+  include_once('../includes/session.php');
   include_once('../database/db_pet.php');
+
+  if(!isset($_SESSION['email'])){
+    die(header("Location: ../pages/login.php"));
+  }
 
   $email = $_SESSION['email'];
   $pet = $_POST['pet_id'];

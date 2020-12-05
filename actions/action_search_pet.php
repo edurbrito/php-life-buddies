@@ -1,4 +1,5 @@
 <?php
+  include_once('../includes/session.php');
   include_once('../database/db_pet.php');
 
   $matchType = clean_text($_GET['match_type']) == "on" ? 1 : 0;

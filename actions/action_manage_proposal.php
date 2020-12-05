@@ -1,8 +1,11 @@
 <?php
+  include_once('../includes/session.php');
   include_once('../database/db_pet.php');
 
-  session_start();
-
+  if(!isset($_SESSION['email'])){
+    die(header("Location: ../pages/login.php"));
+  }
+  
   $email = $_SESSION['email'];
   $pet = $_SESSION['curr_pet'];
   $adopter = $_GET['adopter'];

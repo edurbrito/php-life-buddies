@@ -1,8 +1,6 @@
 <?php
 
-if(!isset($_SESSION)) { 
-  session_start(); 
-} 
+include_once('../includes/session.php');
 
 if (isset($_SESSION['email'])) {
   $email = $_SESSION['email'];

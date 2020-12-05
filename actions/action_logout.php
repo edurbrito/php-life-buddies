@@ -1,7 +1,7 @@
 <?php
   
   session_destroy();
-  session_start();
+  include_once('../includes/session.php');
   $_SESSION = array();
 
   $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged out!');

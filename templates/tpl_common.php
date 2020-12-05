@@ -97,7 +97,7 @@ function draw_header($page_name, $css_links = NULL, $js_links = NULL)
         </li>
       </ul>
       <img class="notification" />
-      <a href="/pages/search.php" class="search"><img src="../css/images/loupe.svg" /></a>
+      <a href="/pages/adopt-list.php" class="search"><img src="../css/images/loupe.svg" /></a>
       <hr>
     </header>
     <?php

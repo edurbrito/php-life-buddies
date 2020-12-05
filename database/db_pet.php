@@ -169,10 +169,44 @@
 
   function getAllPets(){
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM Pet;');
+    $stmt = $db->prepare('SELECT * FROM Pet, Photo WHERE id = pet_id GROUP BY id;');
     $stmt->execute();
 
     return $stmt->fetchAll();
+  }
+
+  function searchPets($matchType, $name, $species, $age, $color, $location){
+    $attributes = array();
+    if($matchType == 0){
+      array_push($attributes, " AND ");
+      $match = "%' AND ";
+    }
+    else if($matchType == 1){
+      array_push($attributes, " OR ");
+      $match = "%' OR ";
+    }
+
+    foreach (array(["name", $name], ["species", $species], ["age", $age], ["color", $color], ["location", $location]) as $attr) {
+      if($attr[1] != NULL && $attr[1] != ""){
+          array_push($attributes, $attr[0] . " LIKE '%" . $attr[1] . $match); 
+      }
+    }
+
+    $index = count( $attributes ) - 1;
+    if($index >= 0)
+    {
+      $value = $attributes[$index];
+      $attributes[$index] = str_replace($match, "%' GROUP BY id;", $value);
+      $query = 'SELECT DISTINCT id, name, age, photo FROM Pet, Photo WHERE id = pet_id' . implode("",$attributes);
+
+      $db = Database::instance()->db();
+      $stmt = $db->prepare($query);
+      $stmt->execute();
+  
+      return $stmt->fetchAll();
+    }
+
+    return NULL;
   }
 
   function clean_text($old_text) {
@@ -194,5 +228,3 @@
   function validate_pet($name, $species, $age, $color, $location){
     return is_name($name) && is_name($species) && is_name($color) && is_alphanumeric($age) && is_alphanumeric($location);
   }
-
-?>

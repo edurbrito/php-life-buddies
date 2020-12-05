@@ -71,3 +71,7 @@
   margin-block-start: 0.83em;
   margin-inline-start: 0px;
 }
+
+.profile-info form input[type="submit"] {
+  background-color:  #8f8d8d;
+}

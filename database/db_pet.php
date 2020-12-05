@@ -167,6 +167,16 @@
     return $questions;
   }
 
+  function getPetPhotos($pet_id) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT photo FROM Photo WHERE pet_id = ?');
+    $stmt->execute(array($pet_id));
+
+    $photos = $stmt->fetchAll();
+    return $photos;
+  }
+
   function getAllPets(){
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Pet;');

@@ -50,31 +50,6 @@
     top: 0;
 }
 
-.pet-post {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pet-post img {
-  width: 2.5em;
-}
-
-.pet-post h4 {
-  padding: 0 1rem 0 1rem;
-  font-weight: normal;
-}
-
-.pet-post button {
-  border: solid var(--green-color) 1px;
-  border-radius: 1rem;
-  background-color: white;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-family: var(--sans-font);
-  font-weight: normal;
-}
-
 .add-pet-image {
   display: flex;
 }
@@ -118,6 +93,7 @@ input[type="file"] {
   margin-right: auto;
   margin-top: 2rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .custom-file-upload:before{
@@ -138,15 +114,6 @@ input[type="file"] {
   margin-inline-start: 0px;
 }
 
-.questions-box {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.fas.fa-arrow-circle-up.fa-2x {
-  color: #acc329;
-  margin-left: 0.5em;
-  position: relative;
-  top: 0.2em;
+.pet-info input[type="submit"] {
+  background-color: #8f8d8d;
 }

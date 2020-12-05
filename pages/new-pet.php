@@ -9,6 +9,7 @@
 
 <section class="pet-container">    
     <form method="post" action="../actions/action_new_pet.php" enctype="multipart/form-data">
+        <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
         <section class="add-pet-image">
             <h2 class="large-text">Pet Images</h2>
             <section id="images-preview"></section>

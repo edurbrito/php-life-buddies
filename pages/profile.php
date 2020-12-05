@@ -38,8 +38,8 @@ draw_header("Profile", array('profile.css'));
                 foreach ($pets as $pet) { ?>
                     <article class="profile-post">
                         <img src="../css/images/dog.svg" />
-                        <h4><?= $pet['name'] ?>, <?= $pet['age'] ?></h4>
-                        <a href="/pages/pet.php?pet_id=<?= $pet['id'] ?>"><button>View Post</button></a>
+                        <h4><?= htmlentities($pet['name']) ?>, <?= htmlentities($pet['age']) ?></h4>
+                        <a href="/pages/pet.php?pet_id=<?= htmlentities($pet['id']) ?>"><button>View Post</button></a>
                     </article>
                 <?php } ?>
             </li>
@@ -49,8 +49,8 @@ draw_header("Profile", array('profile.css'));
                 foreach ($favorites as $pet) { ?>
                     <article class="profile-post">
                         <img src="../css/images/dog.svg" />
-                        <h4><?= $pet['name'] ?>, <?= $pet['age'] ?></h4>
-                        <a href="/pages/pet.php?pet_id=<?= $pet['id'] ?>"><button>View Post</button></a>
+                        <h4><?= htmlentities($pet['name']) ?>, <?= htmlentities($pet['age']) ?></h4>
+                        <a href="/pages/pet.php?pet_id=<?= htmlentities($pet['id']) ?>"><button>View Post</button></a>
                     </article>
                 <?php } ?>
             </li>
@@ -60,8 +60,8 @@ draw_header("Profile", array('profile.css'));
                 foreach ($proposals as $pet) { ?>
                     <article class="profile-post">
                         <img src="../css/images/dog.svg" />
-                        <h4><?= $pet['name'] ?>, <?= $pet['age'] ?></h4>
-                        <a href="/pages/pet.php?pet_id=<?= $pet['id'] ?>"><button>View Post</button></a>
+                        <h4><?= htmlentities($pet['name']) ?>, <?= htmlentities($pet['age']) ?></h4>
+                        <a href="/pages/pet.php?pet_id=<?= htmlentities($pet['id']) ?>"><button>View Post</button></a>
                     </article>
                 <?php } ?>
             </li>
@@ -70,12 +70,13 @@ draw_header("Profile", array('profile.css'));
     <section class="profile-info">
     <?php if ($email != NULL) { ?>
         <form method="post" action="../actions/action_update_profile.php">
+            <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
             <label for="name">Name:</label>
-            <input type="text" name="name" placeholder="Your Name" value="<?= $name ?>" required>
+            <input type="text" name="name" placeholder="Your Name" value="<?= htmlentities($name) ?>" required>
             <label for="phone">Phone number:</label>
-            <input type="tel" name="phone" placeholder="912345678" pattern="[9]{1}[1,2,3,6]{1}[0-9]{7}" value="<?= $phone_number ?>" required>
+            <input type="tel" name="phone" placeholder="912345678" pattern="[9]{1}[1,2,3,6]{1}[0-9]{7}" value="<?= htmlentities($phone_number) ?>" required>
             <label for="email">Email:</label>
-            <input type="email" name="email" placeholder="example@email.com" value="<?= $email ?>" required>
+            <input type="email" name="email" placeholder="example@email.com" value="<?= htmlentities($email) ?>" required>
             <label for="old-password">Current Password:</label>
             <input type="password" name="old-password" placeholder="Verify your current password" required>
             <label for="new-password">New Password:</label>
@@ -84,12 +85,13 @@ draw_header("Profile", array('profile.css'));
         </form>
     <?php } else { ?>
         <form>
+            <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
             <label for="name">Name:</label>
-            <p><?= $user['name'] ?></p>
+            <p><?= htmlentities($user['name']) ?></p>
             <label for="phone">Phone number:</label>
-            <p><?= $user['phone_number'] ?></p>
+            <p><?= htmlentities($user['phone_number']) ?></p>
             <label for="email">Email:</label>
-            <p><?= $user['email'] ?></p>
+            <p><?= htmlentities($user['email']) ?></p>
         </form>
     <?php }?>
     </section>

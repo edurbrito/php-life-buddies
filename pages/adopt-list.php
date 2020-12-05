@@ -11,6 +11,7 @@ $pets = getAllPets();
 ?>
 <section id='search-container'>
   <form>
+    <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
     <label for="species">Name:</label>
     <input type="text" id="name" name="name" type="text">
     <label for="species">Species:</label>
@@ -36,9 +37,9 @@ $pets = getAllPets();
   <?php
   foreach ($pets as $pet) { ?>
     <article class="adopt-list-item">
-      <img src="<?= $pet['photo'] ?>" />
-      <h3><?= $pet['name'] ?>, <?= $pet['age'] ?></h3>
-      <a href="/pages/pet.php?pet_id=<?= $pet['id'] ?>"><button>View Post</button></a>
+      <img src="<?= htmlentities($pet['photo']) ?>" />
+      <h3><?= $pet['name'] ?>, <?= htmlentities($pet['age']) ?></h3>
+      <a href="/pages/pet.php?pet_id=<?= htmlentities($pet['id']) ?>"><button>View Post</button></a>
     </article>
   <?php } ?>
 </section>

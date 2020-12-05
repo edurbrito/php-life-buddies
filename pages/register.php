@@ -10,6 +10,7 @@ draw_header("Register");
 
 <section class="user-form">
     <form method="post" action="../actions/action_register.php">
+        <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
         <label for="name">Name:</label>
         <input type="text" name="name" placeholder="name" required>
         <label for="phone">Phone number:</label>

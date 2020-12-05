@@ -1,10 +1,12 @@
 <?php
 
 include_once('../includes/session.php');
+include_once('../database/db_user.php');
 
 if (isset($_SESSION['email'])) {
   $email = $_SESSION['email'];
   $name = $_SESSION['name'];
+  $notifications = countNotifications($email);
 }
 
 $last_message = end($_SESSION['messages']);
@@ -12,7 +14,7 @@ $_SESSION['messages'] = array();
 
 function draw_header($page_name, $css_links = NULL, $js_links = NULL)
 {
-  global $name, $last_message;
+  global $name, $last_message, $notifications;
   /**
    * Draws the header for all pages. Receives an username
    * if the user is logged in in order to draw the logout
@@ -31,16 +33,16 @@ function draw_header($page_name, $css_links = NULL, $js_links = NULL)
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bar.css">
-    <?php 
-      foreach((array)$css_links as $css) {
-        echo '<link rel="stylesheet" href="../css/' . $css . '">';
-      }
+    <?php
+    foreach ((array)$css_links as $css) {
+      echo '<link rel="stylesheet" href="../css/' . $css . '">';
+    }
     ?>
     <script src="../js/main.js" defer></script>
-    <?php 
-      foreach((array)$js_links as $js) {
-        echo '<script src="../js/' . $js . '" defer></script>';
-      }
+    <?php
+    foreach ((array)$js_links as $js) {
+      echo '<script src="../js/' . $js . '" defer></script>';
+    }
     ?>
   </head>
 
@@ -53,6 +55,17 @@ function draw_header($page_name, $css_links = NULL, $js_links = NULL)
         <div id="snackbar" class="error"><?= $last_message['content'] ?></div>
     <?php }
     } ?>
+
+    <div id="popup" class="overlay">
+      <div class="popup">
+        <h2>Notifications</h2>
+        <a class="close">&times;</a>
+        <div class="content" id="popup-content">
+          Nothing here...
+        </div>
+      </div>
+    </div>
+
     <header class="site-bar">
       <a href="/" class="logo"><img src="../css/images/dog.svg" /></a>
       <ul class="upper-ul">
@@ -94,8 +107,7 @@ function draw_header($page_name, $css_links = NULL, $js_links = NULL)
           </a>
         </li>
       </ul>
-      <img class="notification" />
-      <a href="/pages/adopt-list.php" class="search"><img src="../css/images/loupe.svg" /></a>
+      <i class="fas fa-bell fa-2x" <?php if($notifications > 0){ echo 'data-count="'. $notifications .'"'; } ?>id="notification"></i>
       <hr>
     </header>
     <?php

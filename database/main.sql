@@ -59,8 +59,19 @@ CREATE TABLE AdoptionProposal(
     CONSTRAINT AdoptionProposalPK PRIMARY KEY (user,pet_id),
     CONSTRAINT AdoptionProposalUserFK FOREIGN KEY (user) REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT AdoptionProposalPetFK FOREIGN KEY (pet_id) REFERENCES Pet ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT AdoptionProposalPetState CHECK (state == 0 || state == -1 || state == 1)
+    CONSTRAINT AdoptionProposalPetState FOREIGN KEY (state) REFERENCES AdoptState ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
+CREATE TABLE AdoptState (
+    id                  INTEGER,
+    string              VARCHAR(50) NOT NULL,
+
+    CONSTRAINT AdoptStatePK PRIMARY KEY (id)
+);
+
+INSERT INTO AdoptState VALUES(-1, "Not Accepted");
+INSERT INTO AdoptState VALUES(0, "Waiting for Decision");
+INSERT INTO AdoptState VALUES(1, "Accepted");
 
 CREATE TABLE Question(
     id                  INTEGER,
@@ -80,4 +91,16 @@ CREATE TABLE Favorite(
     CONSTRAINT FavoritePK PRIMARY KEY (user, pet_id),
     CONSTRAINT FavoriteUserFK FOREIGN KEY (user) REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FavoritePetFK FOREIGN KEY (pet_id) REFERENCES Pet ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE UserNotification(
+    user                VARCHAR(50) NOT NULL,
+    string              INTEGER NOT NULL,
+    notifier            VARCHAR(50) DEFAULT NULL,
+    pet_id              INTEGER DEFAULT NULL,
+
+    CONSTRAINT UserNotificationPK PRIMARY KEY (user, string),
+    CONSTRAINT UserNotificationFK FOREIGN KEY (user) REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT UserNotificationNotifierFK FOREIGN KEY (notifier) REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT UserNotificationPetFK FOREIGN KEY (pet_id) REFERENCES Pet ON DELETE CASCADE ON UPDATE CASCADE
 );

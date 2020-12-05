@@ -140,3 +140,36 @@
   top: 1rem;
   bottom: 0rem;
 }
+
+.pet-proposals {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+.pet-proposals a h4 {
+  margin: 0;
+  margin-top: 0.4rem;
+}
+
+.pet-proposals form {
+  width: fit-content;
+  margin: 0;
+}
+
+.pet-proposals h6 {
+  margin: 0;
+  font-weight: normal;
+  color: #8f8d8d;
+}
+
+.pet-proposals form input[type='submit']{
+  box-sizing: border-box;
+  margin: 0.4rem 0.4rem;
+  border: 0.1rem solid black;
+  border-radius: 3rem;
+  background-color: #fff;
+  text-align: center;
+}

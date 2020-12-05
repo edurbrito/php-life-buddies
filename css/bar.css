@@ -28,23 +28,32 @@
   width: 4.6em;
 }
 
-.site-bar .notifications {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-
-.site-bar .search {
+#notification {
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 3;
   place-self: center;
+  max-width: 2em;
+  cursor: pointer;
 }
 
-.site-bar .search img {
-  width: 2em;
+.fas[data-count]{
+  position:relative;
+}
+.fas[data-count]:after{
+  position: absolute;
+  right: -0.75em;
+  top: -.75em;
+  content: attr(data-count);
+  padding: .5em;
+  border-radius: 10em;
+  line-height: .9em;
+  color: white;
+  background: rgba(255,0,0,.75);
+  text-align: center;
+  min-width: 2em;
+  font: bold .4em sans-serif;
 }
 
 .site-bar ul {

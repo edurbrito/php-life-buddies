@@ -1,5 +1,6 @@
 <?php
   include_once('../includes/database.php');
+  include_once('../includes/regex.php');
 
   function insertPet($name, $species, $age, $color, $location, $user) {
     $db = Database::instance()->db();
@@ -112,10 +113,12 @@
     try {
       $stmt = $db->prepare('INSERT INTO Favorite VALUES(?, ?)');
       $stmt->execute(array($user, $pet_id));
+      notifyUser($pet_id, $user, " added to their favorites' list the pet ");
       return 'added';
     } catch (Exception $e) {
       $stmt = $db->prepare('DELETE FROM Favorite WHERE user = ? AND pet_id = ?');
       $stmt->execute(array($user, $pet_id));
+      notifyUser($pet_id, $user, " removed from their favorites' list the pet ");
       return 'removed';
     }
   }
@@ -124,12 +127,16 @@
     $db = Database::instance()->db();
     $stmt = $db->prepare('INSERT INTO Question(user, pet_id, question) VALUES(?, ?, ?)');
     $stmt->execute(array($user, $pet_id, $question));
+
+    notifyUser($pet_id, $user, " asked something about the pet ");
   }
 
   function addPetAdoptionProposal($user, $pet_id){
     $db = Database::instance()->db();
     $stmt = $db->prepare('INSERT INTO AdoptionProposal(user,pet_id) VALUES(?, ?)');
     $stmt->execute(array($user, $pet_id));
+
+    notifyUser($pet_id, $user, " made a proposal to the pet ");
   }
 
   function setPetAdoptState($user, $pet_id, $state){
@@ -140,17 +147,16 @@
       $stmt = $db->prepare('UPDATE AdoptionProposal SET state = ? WHERE pet_id = ? AND user = ? ');
       $stmt->execute(array($state, $pet_id, $user));
     }
-    else if($state == -1){
+    else if($state == -1 || $state == 0){
       $stmt = $db->prepare('UPDATE AdoptionProposal SET state = ? WHERE pet_id = ? AND user = ? ');
       $stmt->execute(array($state, $pet_id, $user));
     }
-
   }
 
   function getPetProposals($pet_id) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT U.email, U.name, A.state FROM User AS U, AdoptionProposal AS A WHERE U.email = A.user AND A.pet_id = ?');
+    $stmt = $db->prepare('SELECT U.email, U.name, A_S.string AS state FROM User AS U, AdoptionProposal AS A, AdoptState AS A_S WHERE U.email = A.user AND A.state = A_S.id AND A.pet_id = ?');
     $stmt->execute(array($pet_id));
 
     $proposals = $stmt->fetchAll();
@@ -219,22 +225,21 @@
     return NULL;
   }
 
-  function clean_text($old_text) {
-    return preg_replace('/[^\w\d\s\.!,\?]/', '', $old_text);
+  function notifyUser($pet_id, $notifier, $string){
+    $db = Database::instance()->db();
+    $pet = getPetInfo($pet_id);
+    try{
+      if($notifier == $pet['user'])
+        throw new Exception();
+
+      $stmt = $db->prepare('SELECT name FROM User WHERE email = ?;');
+      $stmt->execute(array($notifier));
+      $notifier_name = $stmt->fetch()['name'];
+
+      $stmt = $db->prepare('INSERT INTO UserNotification VALUES(?,?,?,?);');
+      $stmt->execute(array($pet['user'], $notifier_name . ' ' . $string . $pet['name'], $notifier, $pet_id));
+    }
+    catch(Exception $e){
+    }
   }
 
-  function is_id($id){
-    return preg_match("/^\d+$/", $id);
-  }
-
-  function is_name($name){
-    return preg_match("/^[a-zA-Z-'À-ú ]+$/", $name);
-  }
-
-  function is_alphanumeric($name){
-    return preg_match("/^[a-zA-ZÀ-ú\d' ]+$/", $name);
-  }
-
-  function validate_pet($name, $species, $age, $color, $location){
-    return is_name($name) && is_name($species) && is_name($color) && is_alphanumeric($age) && is_alphanumeric($location);
-  }

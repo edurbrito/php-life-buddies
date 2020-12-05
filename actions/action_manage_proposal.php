@@ -13,7 +13,7 @@
   }
   
   $email = $_SESSION['email'];
-  $pet = $_SESSION['curr_pet'];
+  $pet = getPetInfo($_POST['pet_id']);
   $adopter = $_GET['adopter'];
   $accept = $_POST['accept'];
   $decline = $_POST['decline'];
@@ -33,12 +33,15 @@
 
   try {
 
-    if(!is_id($pet)){
+    if(!is_id($pet['id'])){
       throw new Exception('Invalid Pet id');
     }
 
     setPetAdoptState($adopter, $pet['id'], $state);
-    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added adopter to pet!');
+    if($state == 1)
+      $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added adopter to pet!');
+    else
+      $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Updated Proposal!');
   } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet adopter!');

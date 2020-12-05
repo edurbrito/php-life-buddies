@@ -58,16 +58,13 @@ if (isset($_GET['pet_id'])) {
                         ?>
                             <form class="questions-box" method="post" action="../actions/action_manage_proposal.php?adopter=<?= htmlentities($proposal['email']) ?>">
                                 <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
+                                <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
                                 <input type="submit" name="accept" value="Accept">
                                 <input type="submit" name="decline" value="Decline">
+                                <input type="submit" name="wait" value="Waiting">
                             </form>
-                        <?php
-                        } else {
-                        ?>
-                            <h6>State: <?= htmlentities($proposal['state']) ?></h6>
-                        <?php
-                        }
-                        ?>
+                        <?php }  ?>
+                        <h6>State: <?= htmlentities($proposal['state']) ?></h6>
                     </article>
                 <?php } ?>
             </li>

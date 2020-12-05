@@ -184,11 +184,11 @@
   }
 
   function is_name($name){
-    return preg_match("/^[a-zA-Z-' ]*$/", $name);
+    return preg_match("/^[a-zA-Z-'À-ú ]+$/", $name);
   }
 
   function is_alphanumeric($name){
-    return preg_match("/^[a-zA-Z\d ]+$/", $name);
+    return preg_match("/^[a-zA-ZÀ-ú\d' ]+$/", $name);
   }
 
   function validate_pet($name, $species, $age, $color, $location){

@@ -79,7 +79,7 @@
   }
 
   function is_name($name){
-    return preg_match("/^[a-zA-Z-' ]*$/", $name);
+    return preg_match("/^[a-zA-Z-'À-ú ]+$/", $name);
   }
 
   function is_email($email){

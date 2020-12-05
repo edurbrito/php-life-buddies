@@ -11,6 +11,7 @@ if (isset($_GET['pet_id'])) {
 
     $proposals = getPetProposals($pet_id);
     $questions = getPetQuestions($pet_id);
+    $photos = getPetPhotos($pet_id);
 
     $owns = getPetOwner($pet_id) == $_SESSION['email'];
     $favorite = isPetFavorite($pet_id, $email);
@@ -25,7 +26,19 @@ if (isset($_GET['pet_id'])) {
     <section class="pet-lists">
         <ul>
             <li>
-                <img src="../images/canary.png" alt="A yellow canary" width="200" height="180">
+                <section id="pet-photos">
+                    <?php
+                        foreach($photos as $key => $photo) {
+                            if ($key === array_key_first($photos)) { ?>
+                                <img src=<?=$photo['photo']?> alt="Pet photo" width="200" height="200">
+                                <br>
+                            <?php }
+                            else { ?>
+                                <img src=<?=$photo['photo']?> alt="Pet photo" width="200" height="200">
+                            <?php }
+                        }
+                    ?>
+                </section>
                 <?php if ($favorite) { ?>
                     <i class="fas fa-star fa-2x" id="favorite"></i>
                 <?php } else { ?>
@@ -84,6 +97,7 @@ if (isset($_GET['pet_id'])) {
         if ($owns) {
         ?>
             <form method="post" action="../actions/action_update_pet.php">
+                <h2 class="large-text">PET INFO</h2>
                 <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
                 <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
                 <label for="name">Name:</label>
@@ -96,10 +110,11 @@ if (isset($_GET['pet_id'])) {
                 <input type="text" name="color" placeholder="Blue" required value="<?= htmlentities($pet['color']) ?>">
                 <label for="location">Location:</label>
                 <input type="text" name="location" placeholder="Down the Street" required value="<?= htmlentities($pet['location']) ?>">
-                <input type="submit" value="Update Info" class="large-text">
+                <input type="submit" value="Update" class="large-text">
             </form>
         <?php } else { ?>
             <form method="post" action="../actions/action_adopt_pet.php">
+                <h2 class="large-text">PET INFO</h2>
                 <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">            
                 <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
                 <label for="name">Name:</label>

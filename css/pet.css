@@ -23,6 +23,11 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  #pet-photos img {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .pet-lists ul {
@@ -40,34 +45,28 @@
     top: 0;
 }
 
-.pet-post {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#pet-photos {
+  text-align: center;
 }
 
-.pet-post img {
-  width: 2.5em;
+#pet-photos img {
+  margin: 2rem;
+  margin-bottom: 0;
 }
 
-.pet-post h4 {
-  padding: 0 1rem 0 1rem;
-  font-weight: normal;
-}
-
-.pet-post button {
-  border: solid var(--green-color) 1px;
-  border-radius: 1rem;
-  background-color: white;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-family: var(--sans-font);
-  font-weight: normal;
+#pet-photos img:first-child {
+  margin: 0;
+  position: relative;
 }
 
 .pet-info {
   display: flex;
   justify-content: center;
+  margin: auto;
+}
+
+.pet-info h2 {
+  margin-bottom: 1rem;
 }
 
 .pet-info form {
@@ -115,6 +114,10 @@
   margin-right: auto;
 }
 
+.pet-info input[type="submit"] {
+  background-color: #8f8d8d;
+}
+
 .fas.fa-arrow-circle-up.fa-2x {
   color: #acc329;
   margin-left: 0.5em;
@@ -128,4 +131,12 @@
 
 #favorite, #question {
   cursor: pointer;
+}
+
+#favorite {
+  position: absolute;
+  right: 0rem;
+  left: 17rem;
+  top: 1rem;
+  bottom: 0rem;
 }

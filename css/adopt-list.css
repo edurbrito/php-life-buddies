@@ -1,7 +1,25 @@
 .adopt-list, #search-container {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 4em 0 4em;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+}
+
+section#search-container {
+  margin-left: 15%;
+  margin-right: 10%;
+  width: 75%; 
+} 
+
+section#search-container form .group{
+  display: inline-block;
+  padding: 1em;
+}
+
+input[type="submit"] {
+  display: block;
+  margin: 0 auto;
 }
 
 .adopt-list-item {

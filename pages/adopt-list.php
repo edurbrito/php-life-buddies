@@ -12,16 +12,27 @@ $pets = getAllPets();
 <section id='search-container'>
   <form>
     <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
-    <label for="species">Name:</label>
-    <input type="text" id="name" name="name" type="text">
-    <label for="species">Species:</label>
-    <input type="text" id="species" name="species" type="text">
-    <label for="color">Color:</label>
-    <input type="text" id="color" name="color" type="text">
-    <label for="age">Age:</label>
-    <input type="text" id="age" name="age" type="text">
-    <label for="location">Location:</label>
-    <input type="text" id="location" name="location" type="text">
+    <div class="group">
+      <label for="name">Name:</label> <br/>
+      <input type="text" id="name" name="name" type="text">
+    </div>
+    <div class="group">
+      <label for="species">Species:</label> <br/>
+      <input type="text" id="species" name="species" type="text">
+    </div>
+    <div class="group">
+      <label for="color">Color:</label> <br/>
+      <input type="text" id="color" name="color" type="text">
+    </div>
+    <div class="group">
+      <label for="age">Age:</label> <br/>
+      <input type="text" id="age" name="age" type="text">
+    </div>
+    <div class="group">
+      <label for="location">Location:</label> <br/>
+      <input type="text" id="location" name="location" type="text">
+    </div>
+    <br/>
     <label for="match_type">Match Any Criteria:</label>
     <input type="checkbox" id="match_type" name="match_type">
     <input type="submit" class="large-text" value="Search">

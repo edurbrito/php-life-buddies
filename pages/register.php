@@ -5,10 +5,9 @@ include_once(dirname(__DIR__) . '/templates/tpl_common.php');
 if (isset($_SESSION['email']))
     die(header('Location: ./profile.php'));
 
-draw_header("Register");
+draw_header("Register", NULL, array("register.js"));
 ?>
 
-<script defer src="../js/register.js"></script>
 <section class="user-form">
     <form method="post" action="../actions/action_register.php">
         <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">

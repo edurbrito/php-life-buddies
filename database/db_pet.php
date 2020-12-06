@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/database.php');
-  include_once('../includes/regex.php');
+  include_once(dirname(__DIR__) . '/includes/database.php');
+  include_once(dirname(__DIR__) . '/includes/regex.php');
 
   function insertPet($name, $species, $age, $color, $location, $user) {
     $db = Database::instance()->db();

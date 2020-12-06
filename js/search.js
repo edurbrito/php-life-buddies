@@ -15,7 +15,6 @@ search.addEventListener('submit', (e) => {
     let request = new XMLHttpRequest()
     request.onreadystatechange = function() {
         if (request.readyState == XMLHttpRequest.DONE) {
-            console.log(request.response);
             let response = JSON.parse(request.response)
 
             let adopt_list = document.querySelector("#adopt-list")

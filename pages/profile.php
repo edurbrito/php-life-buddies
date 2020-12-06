@@ -1,7 +1,7 @@
 <?php
 
-include_once('../templates/tpl_common.php');
-include_once('../database/db_user.php');
+include_once(dirname(__DIR__) . '/templates/tpl_common.php');
+include_once(dirname(__DIR__) . '/database/db_user.php');
 
 if (isset($_GET['user']) && (!isset($_SESSION['email']) || ($_SESSION['email'] != $_GET['user']))) {
     $email = NULL;

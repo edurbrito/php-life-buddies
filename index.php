@@ -1,6 +1,6 @@
 <?php
 
-include_once('./templates/tpl_common.php');
+include_once(__DIR__ . '/templates/tpl_common.php');
 
 draw_header(NULL); ?>
 

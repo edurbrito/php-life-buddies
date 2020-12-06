@@ -20,8 +20,8 @@ notifications.addEventListener('click', () => {
     if (request.readyState == XMLHttpRequest.DONE) {
       let response = JSON.parse(request.response)
       let pop_up_container = document.querySelector("#popup-content")
-      console.log(request.response, response)
-      if (response.length == 0 || response == {})
+
+      if (response.length == 0)
         pop_up_container.innerHTML = "Nothing to show here..."
       else {
         pop_up_container.innerHTML = "";

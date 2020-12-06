@@ -6,7 +6,6 @@ favorite.addEventListener('click', () => {
     let request = new XMLHttpRequest()
     request.onreadystatechange = function() {
         if (request.readyState == XMLHttpRequest.DONE) {
-            console.log(request.response)
             let response = JSON.parse(request.response);
             if(response.type == 'success'){
                 if(response.action == 'added') favorite.classList = 'fas fa-star fa-2x';

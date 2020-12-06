@@ -1,7 +1,7 @@
 <?php
 
-include_once('../includes/session.php');
-include_once('../database/db_user.php');
+include_once(dirname(__DIR__) . '/includes/session.php');
+include_once(dirname(__DIR__) . '/database/db_user.php');
 
 if (isset($_SESSION['email'])) {
   $email = $_SESSION['email'];

@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/database.php');
-  include_once('../includes/regex.php');
+  include_once(dirname(__DIR__) . '/includes/database.php');
+  include_once(dirname(__DIR__) . '/includes/regex.php');
 
   /**
    * Verifies if a certain email, password combination

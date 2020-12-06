@@ -6,12 +6,20 @@
   if($csrf != $_SESSION['csrf'])
     die("{}");
 
-  $matchType = clean_text($_GET['match_type']) == "on" ? 1 : 0;
-  $name = clean_text($_GET['name']);
-  $species = clean_text($_GET['species']);
-  $age = clean_text($_GET['age']);
-  $color = clean_text($_GET['color']);
-  $location = clean_text($_GET['location']);
+  $matchType = $name = $species = $age = $color = $location = NULL;
+  
+  if(isset($_GET['match_type']))
+    $matchType = clean_text($_GET['match_type']) == "on" ? 1 : 0;
+  if(isset($_GET['name']))
+    $name = clean_text($_GET['name']);
+  if(isset($_GET['species']))
+    $species = clean_text($_GET['species']);
+  if(isset($_GET['age']))
+    $age = clean_text($_GET['age']);
+  if(isset($_GET['color']))
+    $color = clean_text($_GET['color']);
+  if(isset($_GET['location']))
+    $location = clean_text($_GET['location']);
 
   try {
 

@@ -1,6 +1,6 @@
 <?php
-include_once('../templates/tpl_common.php');
-include_once('../database/db_pet.php');
+include_once(dirname(__DIR__) . '/templates/tpl_common.php');
+include_once(dirname(__DIR__) . '/database/db_pet.php');
 
 if (isset($_GET['pet_id'])) {
     $pet_id = $_GET['pet_id'];

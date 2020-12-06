@@ -1,10 +1,10 @@
 <?php
 
-include_once('../templates/tpl_common.php');
+include_once(dirname(__DIR__) . '/templates/tpl_common.php');
 
 draw_header("Adoption List", array('adopt-list.css'), array('search.js'));
 
-include_once('../database/db_pet.php');
+include_once(dirname(__DIR__) . '/database/db_pet.php');
 
 $pets = getAllPets();
 

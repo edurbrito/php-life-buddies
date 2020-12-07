@@ -14,34 +14,34 @@ $pets = getAllPets();
     <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
     <div class="group">
       <label for="name">Name:</label> <br/>
-      <input type="text" id="name" name="name" type="text">
+      <input type="text" id="name" name="name" list="suggestions-name">
+      <datalist id="suggestions-name"></datalist>
     </div>
     <div class="group">
       <label for="species">Species:</label> <br/>
-      <input type="text" id="species" name="species" type="text">
+      <input type="text" id="species" name="species" list="suggestions-species">
+      <datalist id="suggestions-species"></datalist>
     </div>
     <div class="group">
       <label for="color">Color:</label> <br/>
-      <input type="text" id="color" name="color" type="text">
+      <input type="text" id="color" name="color" list="suggestions-color">
+      <datalist id="suggestions-color"></datalist>
     </div>
     <div class="group">
       <label for="age">Age:</label> <br/>
-      <input type="text" id="age" name="age" type="text">
+      <input type="text" id="age" name="age" list="suggestions-age">
+      <datalist id="suggestions-age"></datalist>
     </div>
     <div class="group">
       <label for="location">Location:</label> <br/>
-      <input type="text" id="location" name="location" type="text">
+      <input type="text" id="location" name="location" list="suggestions-location">
+      <datalist id="suggestions-location"></datalist>
     </div>
     <br/>
     <label for="match_type">Match Any Criteria:</label>
     <input type="checkbox" id="match_type" name="match_type">
     <input type="submit" class="large-text" value="Search">
   </form>
-  <!-- <ul id="suggestions-name"></ul>
-  <ul id="suggestions-species"></ul>
-  <ul id="suggestions-color"></ul>
-  <ul id="suggestions-age"></ul>
-  <ul id="suggestions-location"></ul> -->
 </section>
 
 <section class="adopt-list" id="adopt-list">

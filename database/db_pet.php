@@ -243,3 +243,53 @@
     }
   }
 
+  function getSpecies($specie) {
+    $db = Database::instance()->db();
+    
+    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(species) LIKE upper(?) LIMIT 5");
+    $stmt->execute(array("$specie%"));
+    $species = $stmt->fetchAll();
+
+    return $species;
+  }
+
+  function getNames($name) {
+    $db = Database::instance()->db();
+    
+    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(name) LIKE upper(?) LIMIT 5");
+    $stmt->execute(array("$name%"));
+    $names = $stmt->fetchAll();
+
+    return $names;
+  }
+
+  function getAges($age) {
+    $db = Database::instance()->db();
+    
+    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(age) LIKE upper(?) LIMIT 5");
+    $stmt->execute(array("$age%"));
+    $ages = $stmt->fetchAll();
+
+    return $ages;
+  }
+
+  function getColors($color) {
+    $db = Database::instance()->db();
+    
+    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(color) LIKE upper(?) LIMIT 5");
+    $stmt->execute(array("$color%"));
+    $colors = $stmt->fetchAll();
+
+    return $colors;
+  }
+
+  function getLocations($location) {
+    $db = Database::instance()->db();
+    
+    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(location) LIKE upper(?) LIMIT 5");
+    $stmt->execute(array("$location%"));
+    $locations = $stmt->fetchAll();
+
+    return $locations;
+  }
+?>

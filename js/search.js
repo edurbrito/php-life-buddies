@@ -50,3 +50,124 @@ search.addEventListener('submit', (e) => {
     request.send();
 
 });
+
+let nameL = document.getElementById("name")
+nameL.addEventListener("keyup", nameChanged);
+
+function nameChanged(event) {
+    let name = event.target;
+    let request = new XMLHttpRequest();
+    request.addEventListener("load", namesReceived);
+    request.open("get", "../actions/action_get_names.php?name=" + name.value, true)
+    request.send()
+}
+
+function namesReceived() {
+    let names = JSON.parse(this.responseText)
+    let list = document.getElementById("suggestions-name")
+    list.innerHTML = ""
+
+    for(name in names) {
+        let item = document.createElement("option")
+        item.innerHTML = names[name].name
+        console.log(item)
+        list.appendChild(item)
+    }
+}
+
+
+let specieL = document.getElementById("species")
+specieL.addEventListener("keyup", specieChanged);
+
+function specieChanged(event) {
+    let specie = event.target;
+    let request = new XMLHttpRequest();
+    request.addEventListener("load", speciesReceived);
+    request.open("get", "../actions/action_get_species.php?specie=" + specie.value, true)
+    request.send()
+}
+
+function speciesReceived() {
+    let species = JSON.parse(this.responseText)
+    let list = document.getElementById("suggestions-species")
+    list.innerHTML = ""
+
+    for(specie in species) {
+        let item = document.createElement("option")
+        item.innerHTML = species[specie].species
+        console.log(item)
+        list.appendChild(item)
+    }
+}
+
+let colorL = document.getElementById("color")
+colorL.addEventListener("keyup", colorChanged);
+
+function colorChanged(event) {
+    let color = event.target;
+    let request = new XMLHttpRequest();
+    request.addEventListener("load", colorsReceived);
+    request.open("get", "../actions/action_get_colors.php?color=" + color.value, true)
+    request.send()
+}
+
+function colorsReceived() {
+    let colors = JSON.parse(this.responseText)
+    let list = document.getElementById("suggestions-color")
+    list.innerHTML = ""
+
+    for(color in colors) {
+        let item = document.createElement("option")
+        item.innerHTML = colors[color].color
+        console.log(item)
+        list.appendChild(item)
+    }
+}
+
+let ageL = document.getElementById("age")
+ageL.addEventListener("keyup", ageChanged);
+
+function ageChanged(event) {
+    let age = event.target;
+    let request = new XMLHttpRequest();
+    request.addEventListener("load", agesReceived);
+    request.open("get", "../actions/action_get_ages.php?age=" + age.value, true)
+    request.send()
+}
+
+function agesReceived() {
+    let ages = JSON.parse(this.responseText)
+    let list = document.getElementById("suggestions-age")
+    list.innerHTML = ""
+
+    for(age in ages) {
+        let item = document.createElement("option")
+        item.innerHTML = ages[age].age
+        console.log(item)
+        list.appendChild(item)
+    }
+}
+
+let locationL = document.getElementById("location")
+locationL.addEventListener("keyup", locationChanged);
+
+function locationChanged(event) {
+    let location = event.target;
+    let request = new XMLHttpRequest();
+    request.addEventListener("load", locationsReceived);
+    request.open("get", "../actions/action_get_locations.php?location=" + location.value, true)
+    request.send()
+}
+
+function locationsReceived() {
+    let locations = JSON.parse(this.responseText)
+    let list = document.getElementById("suggestions-location")
+    list.innerHTML = ""
+
+    for(location in locations) {
+        let item = document.createElement("option")
+        item.innerHTML = locations[location].location
+        console.log(item)
+        list.appendChild(item)
+    }
+}

@@ -1,4 +1,3 @@
-
 let favorite = document.querySelector("#favorite")
 
 favorite.addEventListener('click', () => {

@@ -20,17 +20,19 @@
   $location = $_POST['location'];
 
   try {
-
-    if(!validate_pet($name, $species, $age, $color, $location))
-      throw new Exception('Matching error in on of the inputs');
+    if ($msg = invalid_pet($name, $species, $age, $color, $location)) {
+      throw new Exception($msg);
+    }
 
     $pet_info = insertPet($name, $species, $age, $color, $location, $user);
-    addAllPetPhotos($user, $pet_info);
+    if (addAllPetPhotos($user, $pet_info) < 0) {
+      removePet($pet_info['id']);
+      throw new Exception('At least one photo of the pet is required');
+    }
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added new pet!');
     header("Location: ../pages/pet.php?pet_id={$pet_id}");
   } catch (Exception $e) {
-    // die($e->getMessage());
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet!');
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet! '.$e->getMessage());
     header('Location: ../pages/new-pet.php');
   }
 ?>

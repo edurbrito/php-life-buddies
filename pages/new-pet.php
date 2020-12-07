@@ -14,7 +14,7 @@
             <h2 class="large-text">Pet Images</h2>
             <section id="images-preview"></section>
             <label for="pet-image" class="custom-file-upload"></label>
-            <input type="file" name="pet-image[]" id="pet-image" onchange="previewImages(this);" multiple required>
+            <input type="file" name="pet-image[]" id="pet-image" onchange="previewImages(this);" multiple>
         </section>
 
         <section class="pet-info">

@@ -3,7 +3,7 @@ function InvalidName(textbox) {
     textbox.setCustomValidity('');
     var input = document.getElementById('name');
     if(input.validity.patternMismatch){
-        input.setCustomValidity("Please wright your real name. Your name must only contain letters e.g. John Smith");
+        input.setCustomValidity("Please write your real name. Your name must only contain letters e.g. John Smith");
    }    
    else {
     input.setCustomValidity('');

@@ -42,6 +42,22 @@
     return preg_match("/^[a-zA-ZÀ-ú\d' ]+$/", $name);
   }
 
-  function validate_pet($name, $species, $age, $color, $location){
-    return is_name($name) && is_name($species) && is_name($color) && is_alphanumeric($age) && is_alphanumeric($location);
+  function invalid_pet($name, $species, $age, $color, $location) {
+    if (!is_name($name)) {
+      return "Invalid Pet Name!";
+    }
+    else if (!is_name($species)) {
+      return "Invalid Species!";
+    }
+    else if (!is_name($color)) {
+      return "Invalid Color!";
+    }
+    else if (!is_alphanumeric($age)) {
+      return "Invalid Age!";
+    }
+    else if (!is_alphanumeric($location)) {
+      return "Invalid Location!";
+    }
+
+    return "";
   }

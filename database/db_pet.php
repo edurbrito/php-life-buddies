@@ -14,6 +14,13 @@
     return $pet;
   }
 
+  function removePet($pet_id) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('DELETE FROM Pet WHERE id=?');
+    $stmt->execute(array($pet_id));
+  }
+
   function updatePet($pet_id, $name, $species, $age, $color, $location, $user) {
     $db = Database::instance()->db();
 
@@ -60,6 +67,10 @@
     $allowFileType = array('jpg','png','jpeg', 'JPG', 'PNG', 'JPEG');
 
     $total = count($_FILES['pet-image']['name']);
+
+    if ($total === 1 && !$_FILES['pet-image']['name'][0]) {
+      return -1;
+    }
 
     $error = false;
 

@@ -27,8 +27,8 @@
         $color = clean_text($_POST['color']);
         $location = clean_text($_POST['location']);
 
-        if(!validate_pet($name, $species, $age, $color, $location))
-          throw new Exception('Matching error in on of the inputs');
+        if($msg = invalid_pet($name, $species, $age, $color, $location))
+          throw new Exception('Matching error in one of the inputs');
 
         updatePet($pet, $name, $species, $age, $color, $location, $email);
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Pet Updated!');

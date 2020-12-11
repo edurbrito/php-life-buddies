@@ -41,7 +41,7 @@
   function is_alphanumeric($name){
     return preg_match("/^[a-zA-ZÀ-ú\d' ]+$/", $name);
   }
-
+  
   function invalid_pet($name, $species, $age, $color, $location) {
     if (!is_name($name)) {
       return "Invalid Pet Name!";

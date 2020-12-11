@@ -19,15 +19,15 @@
 
         <section class="pet-info">
             <label for="name">Name:</label>
-            <input type="text" name="name" placeholder="Max, Kitty, Sky, Nemo..." required>
+            <input type="text" name="name" placeholder="Max, Kitty, Sky, Nemo..." pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkName()" onBlur="checkName()" oninvalid="invalidName(this);" required>
             <label for="species">Species:</label>
-            <input type="text" name="species" placeholder="Dog, Cat, Bird, Fish..." required>
+            <input type="text" name="species" placeholder="Dog, Cat, Bird, Fish..." pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkSpecies()" onBlur="checkSpecies()" oninvalid="invalidSpecies(this);" required>
             <label for="age">Age:</label>
-            <input type="text" name="age" placeholder="10 years, 4 months, 2 weeks...">
+            <input type="text" name="age" placeholder="10 years, 4 months, 2 weeks..." pattern="^[a-zA-ZÀ-ú\d' ]+$" onkeyup="checkAge()" onBlur="checkAge()" oninvalid="invalidAge(this);">
             <label for="color">Color:</label>
-            <input type="text" name="color" placeholder="Brown, Black, Yellow, Orange...">
+            <input type="text" name="color" placeholder="Brown, Black, Yellow, Orange..." pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkColor()" onBlur="checkColor()" oninvalid="invalidColor(this);">
             <label for="location">Location:</label>
-            <input type="text" name="location" placeholder="Pick up adress" required>
+            <input type="text" name="location" placeholder="Pick up address" pattern="^[a-zA-ZÀ-ú\d' ]+$$" onkeyup="checkLocation()" onBlur="checkLocation()" oninvalid="invalidLocation(this);" required>
             <input type="submit" value="Submit" class="large-text">
         </section>
     </form>

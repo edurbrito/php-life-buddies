@@ -1,7 +1,7 @@
 // Invalid Names and Errors associated
-function InvalidName(textbox) {
+function invalidName(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('name');
+    var input = document.getElementsByName('name')[0];
     if(input.validity.patternMismatch){
         input.setCustomValidity("Please write your real name. Your name must only contain letters e.g. John Smith");
    }    
@@ -11,9 +11,9 @@ function InvalidName(textbox) {
    return true;
 }
 
-function Checkname(){
-    var name = document.getElementById("name");
-    InvalidName(name);
+function checkName(){
+    var name = document.getElementsByName("name")[0];
+    invalidName(name);
     if (name.validity.patternMismatch){
         name.style.color = 'red';
     }
@@ -23,9 +23,9 @@ function Checkname(){
 
 // Invalid Phones and Errors associated
 
-  function InvalidPhone(textbox) {
+  function invalidPhone(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('phone');
+    var input = document.getElementsByName('phone')[0];
     if(input.validity.patternMismatch){
         if(input.value.length<9)
             input.setCustomValidity("Your phone number should have exactly 9 digits e.g. 923456789");
@@ -40,9 +40,9 @@ function Checkname(){
    return true;
 }
   
-function Checkphone(){
-    var phone = document.getElementById("phone");
-    InvalidPhone(phone);
+function checkPhone(){
+    var phone = document.getElementsByName("phone")[0];
+    invalidPhone(phone);
     if (phone.validity.patternMismatch){
         phone.style.color = 'red';
     }
@@ -52,9 +52,9 @@ function Checkphone(){
   
 // Invalid Emails and Errors associated
 
-function InvalidPhone(textbox) {
+function invalidPhone(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('phone');
+    var input = document.getElementsByName('phone')[0];
     if(input.validity.patternMismatch){
         if(input.value.length<9)
             input.setCustomValidity("Your phone number should have exactly 9 digits e.g. 923456789");
@@ -69,8 +69,8 @@ function InvalidPhone(textbox) {
    return true;
 }
   
-function CheckEmail(){
-    var email = document.getElementById("email");
+function checkEmail(){
+    var email = document.getElementsByName("email")[0];
     if (email.validity.patternMismatch){
         email.style.color = 'red';
     }
@@ -84,9 +84,11 @@ function hasNumber(myString) {
     return /\d/.test(myString);
   }
 
-function InvalidPassword(textbox) {
+function invalidPassword(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('password');
+    var input = document.getElementsByName('password')[0];
+    if (input==null)
+        input = document.getElementsByName('new-password')[0];
     if(input.validity.patternMismatch){
         if (input.value.length<8)
         {
@@ -106,7 +108,9 @@ function InvalidPassword(textbox) {
    return true;
 }
 
-function CheckPassword(){
-    var password = document.getElementById("password");
-    InvalidPassword(password);
+function checkPassword(){
+    var password = document.getElementsByName("password")[0];
+    if (password==null)
+        password = document.getElementsByName('new-password')[0];
+    invalidPassword(password);
   }

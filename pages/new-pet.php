@@ -19,9 +19,9 @@
 
         <section class="pet-info">
             <label for="name">Name:</label>
-            <input type="text" name="name" placeholder="Max, Kitty, Sky, Nemo..." required>
+            <input type="text" id="name" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkName()" onBlur="checkName()" oninvalid="invalidName(this);" name="name" placeholder="Max, Kitty, Sky, Nemo..." required>
             <label for="species">Species:</label>
-            <input type="text" name="species" placeholder="Dog, Cat, Bird, Fish..." required>
+            <input type="text" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkSpecies()" onBlur="checkSpecies()" oninvalid="invalidSpecies(this);" name="species" placeholder="Dog, Cat, Bird, Fish..." required>
             <label for="age">Age:</label>
             <input type="text" name="age" placeholder="10 years, 4 months, 2 weeks...">
             <label for="color">Color:</label>

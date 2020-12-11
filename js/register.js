@@ -1,5 +1,5 @@
 // Invalid Names and Errors associated
-function InvalidName(textbox) {
+function invalidName(textbox) {
     textbox.setCustomValidity('');
     var input = document.getElementById('name');
     if(input.validity.patternMismatch){
@@ -11,9 +11,9 @@ function InvalidName(textbox) {
    return true;
 }
 
-function Checkname(){
+function checkName(){
     var name = document.getElementById("name");
-    InvalidName(name);
+    invalidName(name);
     if (name.validity.patternMismatch){
         name.style.color = 'red';
     }
@@ -23,7 +23,7 @@ function Checkname(){
 
 // Invalid Phones and Errors associated
 
-  function InvalidPhone(textbox) {
+  function invalidPhone(textbox) {
     textbox.setCustomValidity('');
     var input = document.getElementById('phone');
     if(input.validity.patternMismatch){
@@ -40,9 +40,9 @@ function Checkname(){
    return true;
 }
   
-function Checkphone(){
+function checkPhone(){
     var phone = document.getElementById("phone");
-    InvalidPhone(phone);
+    invalidPhone(phone);
     if (phone.validity.patternMismatch){
         phone.style.color = 'red';
     }
@@ -52,7 +52,7 @@ function Checkphone(){
   
 // Invalid Emails and Errors associated
 
-function InvalidPhone(textbox) {
+function invalidPhone(textbox) {
     textbox.setCustomValidity('');
     var input = document.getElementById('phone');
     if(input.validity.patternMismatch){
@@ -69,7 +69,7 @@ function InvalidPhone(textbox) {
    return true;
 }
   
-function CheckEmail(){
+function checkEmail(){
     var email = document.getElementById("email");
     if (email.validity.patternMismatch){
         email.style.color = 'red';
@@ -84,7 +84,7 @@ function hasNumber(myString) {
     return /\d/.test(myString);
   }
 
-function InvalidPassword(textbox) {
+function invalidPassword(textbox) {
     textbox.setCustomValidity('');
     var input = document.getElementById('password');
     if(input.validity.patternMismatch){
@@ -106,7 +106,7 @@ function InvalidPassword(textbox) {
    return true;
 }
 
-function CheckPassword(){
+function checkPassword(){
     var password = document.getElementById("password");
-    InvalidPassword(password);
+    invalidPassword(password);
   }

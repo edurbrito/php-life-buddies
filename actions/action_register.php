@@ -14,7 +14,6 @@
   $phone_number = $_POST['phone'];
 
   try {
-
     if(!validate_user($name, $email, $phone_number, $password)){
       throw new Exception("Matching errors in one of the inputs");
     }

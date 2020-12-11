@@ -109,8 +109,11 @@ footer {
 
 .top-banner .large-text {
   font-weight: bold;
-  font-size: 4em;
-  width: 45%;
+  font-size: 3vw;
+  padding: 0.3vw 0.3vw 0.3vw 0.3vw;
+  margin-right: 0.3vw;
+  margin-left: 0.3vw;
+  width: 40vw;
   top: 92%;
   left: 30%;
 }

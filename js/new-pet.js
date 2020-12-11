@@ -23,3 +23,51 @@ function previewImages(input) {
         }
     }
 }
+
+// Invalid Names and Errors associated
+function invalidName(textbox) {
+    textbox.setCustomValidity('');
+    var input = document.getElementById('name');
+    if(input.validity.patternMismatch){
+        input.setCustomValidity("Please write a valid pet name. The name must only contain letters e.g. Max");
+   }    
+   else {
+    input.setCustomValidity('');
+   }
+   return true;
+}
+
+function checkName(){
+    var name = document.getElementById("name");
+    invalidName(name);
+    if (name.validity.patternMismatch){
+        name.style.color = 'red';
+    }
+    else
+    name.style.color = 'black';
+  }
+
+
+// Invalid Species and Errors associated
+function invalidSpecies(textbox) {
+    textbox.setCustomValidity('');
+    var input = document.getElementsByName('species')[0];
+    console.log(input);
+    if(input.validity.patternMismatch){
+        input.setCustomValidity("Please write a valid pet species. The species must only contain letters e.g. Cat");
+   }    
+   else {
+    input.setCustomValidity('');
+   }
+   return true;
+}
+
+function checkSpecies(){
+    var species = document.getElementsByName("species")[0];
+    invalidSpecies(species);
+    if (species.validity.patternMismatch){
+        species.style.color = 'red';
+    }
+    else
+    species.style.color = 'black';
+  }

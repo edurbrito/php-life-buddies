@@ -12,13 +12,13 @@ draw_header("Register", NULL, array("register.js"));
     <form method="post" action="../actions/action_register.php">
         <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
         <label for="name">Name:</label>
-        <input type="text" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="Checkname()" onBlur="Checkname()" oninvalid="InvalidName(this);" oninput="setCustomValidity('')" id="name" name="name" placeholder="name" required>
+        <input type="text" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkName()" onBlur="checkName()" oninvalid="invalidName(this);" oninput="setCustomValidity('')" id="name" name="name" placeholder="name" required>
         <label for="phone">Phone number:</label>
-        <input type="tel" name="phone" id="phone" onkeyup="Checkphone()" onBlur="Checkphone()" oninvalid="InvalidPhone(this);" oninput="setCustomValidity('')" placeholder="912345678" pattern="[9]{1}[1,2,3,6]{1}[0-9]{7}" required>
+        <input type="tel" name="phone" id="phone" onkeyup="checkPhone()" onBlur="checkPhone()" oninvalid="invalidPhone(this);" oninput="setCustomValidity('')" placeholder="912345678" pattern="[9]{1}[1,2,3,6]{1}[0-9]{7}" required>
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" onkeyup="CheckEmail()" onBlur="CheckEmail()"placeholder="example@email.com" required>
+        <input type="email" name="email" id="email" pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" onkeyup="checkEmail()" onBlur="checkEmail()"placeholder="example@email.com" required>
         <label for="password">Password:</label>
-        <input type="password" id="password" pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$" name="password" onkeyup="CheckPassword()" onBlur="CheckPassword()" oninvalid="InvalidPassword(this);" oninput="setCustomValidity('')" placeholder="password" required>
+        <input type="password" id="password" pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$" name="password" onkeyup="checkPassword()" onBlur="checkPassword()" oninvalid="invalidPassword(this);" oninput="setCustomValidity('')" placeholder="password" required>
         <input type="submit" value="Register" class="large-text">
     </form>
 

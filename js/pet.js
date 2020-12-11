@@ -13,9 +13,9 @@ favorite.addEventListener('click', () => {
 
         }
     }
-    request.open("POST", "../actions/action_favorite_pet.php", true)
+    request.open("GET", "../actions/pet/action_favorite_pet.php?pet_id=" + pet_id, true)
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')    
-    request.send(JSON.stringify({'pet_id': pet_id}))
+    request.send()
 })
 
 

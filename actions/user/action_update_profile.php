@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/session.php');
-  include_once('../database/db_user.php');
+  include_once('../../includes/session.php');
+  include_once('../../database/db_user.php');
 
   $csrf = $_POST['csrf'];
   if($csrf != $_SESSION['csrf']){
@@ -9,7 +9,7 @@
   }
 
   if(!isset($_SESSION['email'])){
-    die(header("Location: ../pages/login.php"));
+    die(header("Location: ../../pages/login.php"));
   }
 
   $email = $_SESSION['email'];
@@ -40,6 +40,6 @@
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update!');
   }
-  header('Location: ../pages/profile.php');
+  header('Location: ../../pages/profile.php');
 
 ?>

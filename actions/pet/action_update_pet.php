@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/session.php');
-  include_once('../database/db_pet.php');
+  include_once('../../includes/session.php');
+  include_once('../../database/db_pet.php');
 
   $csrf = $_POST['csrf'];
   if($csrf != $_SESSION['csrf']){
@@ -9,7 +9,7 @@
   }
 
   if(!isset($_SESSION['email'])){
-    die(header("Location: ../pages/login.php"));
+    die(header("Location: ../../pages/login.php"));
   }
 
   $email = $_SESSION['email'];
@@ -27,9 +27,8 @@
         $color = clean_text($_POST['color']);
         $location = clean_text($_POST['location']);
 
-        if ($msg = invalid_pet($name, $species, $age, $color, $location)) {
+        if(($msg = invalid_pet($name, $species, $age, $color, $location)) != "")
           throw new Exception($msg);
-        }
 
         updatePet($pet, $name, $species, $age, $color, $location, $email);
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Pet Updated!');
@@ -39,7 +38,8 @@
       }
 
   } catch (Exception $e) {
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet! '.$e->getMessage());
+    // die($e->getMessage());
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update pet!');
   }
-  header("Location: ../pages/pet.php?pet_id={$pet}");
+  header("Location: ../../pages/pet.php?pet_id={$pet}");
 ?>

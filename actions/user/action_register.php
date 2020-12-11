@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/session.php');
-  include_once('../database/db_user.php');
+  include_once('../../includes/session.php');
+  include_once('../../database/db_user.php');
 
   $csrf = $_POST['csrf'];
   if($csrf != $_SESSION['csrf']){
@@ -23,10 +23,10 @@
     $_SESSION['name'] = $name;
     $_SESSION['phone_number'] = $phone_number;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
-    header('Location: ../pages/adopt-list.php');
+    header('Location: ../../pages/adopt-list.php');
   } catch (Exception $e) {
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
-    header('Location: ../pages/register.php');
+    header('Location: ../../pages/register.php');
   }
 ?>

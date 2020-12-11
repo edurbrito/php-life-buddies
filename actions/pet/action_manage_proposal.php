@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/session.php');
-  include_once('../database/db_pet.php');
+  include_once('../../includes/session.php');
+  include_once('../../database/db_pet.php');
 
   $csrf = $_POST['csrf'];
   if($csrf != $_SESSION['csrf']){
@@ -9,7 +9,7 @@
   }
 
   if(!isset($_SESSION['email'])){
-    die(header("Location: ../pages/login.php"));
+    die(header("Location: ../../pages/login.php"));
   }
   
   $email = $_SESSION['email'];
@@ -25,10 +25,10 @@
   else $state = 0;
 
   if($email == NULL){
-    die(header("Location: ../pages/login.php"));
+    die(header("Location: ../../pages/login.php"));
   }
   else if($email != $pet['user'] || $pet['adoptedBy'] != NULL){
-    die(header("Location: ../pages/pet.php?pet_id={$pet['id']}"));
+    die(header("Location: ../../pages/pet.php?pet_id={$pet['id']}"));
   }
 
   try {
@@ -46,5 +46,5 @@
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet adopter!');
   }
-  header("Location: ../pages/pet.php?pet_id={$pet['id']}");
+  header("Location: ../../pages/pet.php?pet_id={$pet['id']}");
 ?>

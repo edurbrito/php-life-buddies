@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/session.php');
-  include_once('../database/db_pet.php');
+  include_once('../../includes/session.php');
+  include_once('../../database/db_pet.php');
 
   $csrf = $_POST['csrf'];
   if($csrf != $_SESSION['csrf']){
@@ -9,7 +9,7 @@
   }
 
   if(!isset($_SESSION['email'])){
-    die(header("Location: ../pages/login.php"));
+    die(header("Location: ../../pages/login.php"));
   }
 
   $email = $_SESSION['email'];
@@ -29,5 +29,5 @@
     // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add question to pet!');
   }
-  header("Location: ../pages/pet.php?pet_id={$pet}");
+  header("Location: ../../pages/pet.php?pet_id={$pet}");
 ?>

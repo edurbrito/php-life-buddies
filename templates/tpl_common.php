@@ -76,7 +76,7 @@ function draw_header($page_name, $css_links = NULL, $js_links = NULL)
             <a href="../pages/profile.php"><?= $name ?></a>
           </li>
           <li>
-            <a href="../actions/action_logout.php">Logout</a>
+            <a href="../actions/user/action_logout.php">Logout</a>
           </li>
         <?php } else { ?>
           <li>

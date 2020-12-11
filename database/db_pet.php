@@ -109,8 +109,10 @@
 
       // Upload file to server
       try {
-        move_uploaded_file($tempPath, $originalPath);
-        addPetPhoto($user, $pet_info, $originalPath);
+        if(move_uploaded_file($tempPath, "../" . $originalPath) != false)
+          addPetPhoto($user, $pet_info, $originalPath);
+        else
+          $msg = array('type' => 'error', 'content' => '.'.$fileType.' File type not allowed ('.$fileName.')');
       }
       catch(Exception $e) {
         continue;

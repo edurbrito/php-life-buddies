@@ -45,7 +45,7 @@ search.addEventListener('submit', (e) => {
         }
     }
 
-    request.open("GET", "../actions/action_search_pet.php?" + encodeForAjax(kvpairs), true)
+    request.open("GET", "../actions/search/action_search_pet.php?" + encodeForAjax(kvpairs), true)
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')    
     request.send();
 
@@ -58,7 +58,7 @@ function nameChanged(event) {
     let name = event.target;
     let request = new XMLHttpRequest();
     request.addEventListener("load", namesReceived);
-    request.open("get", "../actions/action_get_names.php?name=" + name.value, true)
+    request.open("get", "../actions/search/action_get_names.php?name=" + name.value, true)
     request.send()
 }
 
@@ -82,7 +82,7 @@ function specieChanged(event) {
     let specie = event.target;
     let request = new XMLHttpRequest();
     request.addEventListener("load", speciesReceived);
-    request.open("get", "../actions/action_get_species.php?specie=" + specie.value, true)
+    request.open("get", "../actions/search/action_get_species.php?specie=" + specie.value, true)
     request.send()
 }
 
@@ -105,7 +105,7 @@ function colorChanged(event) {
     let color = event.target;
     let request = new XMLHttpRequest();
     request.addEventListener("load", colorsReceived);
-    request.open("get", "../actions/action_get_colors.php?color=" + color.value, true)
+    request.open("get", "../actions/search/action_get_colors.php?color=" + color.value, true)
     request.send()
 }
 
@@ -128,7 +128,7 @@ function ageChanged(event) {
     let age = event.target;
     let request = new XMLHttpRequest();
     request.addEventListener("load", agesReceived);
-    request.open("get", "../actions/action_get_ages.php?age=" + age.value, true)
+    request.open("get", "../actions/search/action_get_ages.php?age=" + age.value, true)
     request.send()
 }
 
@@ -151,7 +151,7 @@ function locationChanged(event) {
     let location = event.target;
     let request = new XMLHttpRequest();
     request.addEventListener("load", locationsReceived);
-    request.open("get", "../actions/action_get_locations.php?location=" + location.value, true)
+    request.open("get", "../actions/search/action_get_locations.php?location=" + location.value, true)
     request.send()
 }
 

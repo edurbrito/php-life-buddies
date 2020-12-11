@@ -60,7 +60,7 @@ if (isset($_GET['pet_id'])) {
             </li>
             <?php if ($owns || $adopted) { ?>
                 <li>
-                    <form method="post" action="../actions/action_more_pet_photos.php" enctype="multipart/form-data">
+                    <form method="post" action="../actions/pet/action_more_pet_photos.php" enctype="multipart/form-data">
                         <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
                         <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
                         <section class="add-pet-image">
@@ -86,7 +86,7 @@ if (isset($_GET['pet_id'])) {
                         <?php
                         if ($owns && $pet['adoptedBy'] == NULL) {
                         ?>
-                            <form class="questions-box" method="post" action="../actions/action_manage_proposal.php?adopter=<?= htmlentities($proposal['email']) ?>">
+                            <form class="questions-box" method="post" action="../actions/pet/action_manage_proposal.php?adopter=<?= htmlentities($proposal['email']) ?>">
                                 <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
                                 <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
                                 <input type="submit" name="accept" value="Accept">
@@ -109,7 +109,7 @@ if (isset($_GET['pet_id'])) {
                         </article>
                     <?php } ?>
                 </section>
-                <form class="questions-box" method="post" action="../actions/action_question_pet.php">
+                <form class="questions-box" method="post" action="../actions/pet/action_question_pet.php">
                     <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
                     <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
                     <input type="text" name="question" placeholder="Your Message" required>
@@ -123,7 +123,7 @@ if (isset($_GET['pet_id'])) {
         <?php
         if ($owns) {
         ?>
-            <form method="post" action="../actions/action_update_pet.php">
+            <form method="post" action="../actions/pet/action_update_pet.php">
                 <h2 class="large-text">PET INFO</h2>
                 <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
                 <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
@@ -140,7 +140,7 @@ if (isset($_GET['pet_id'])) {
                 <input type="submit" value="Update" class="large-text">
             </form>
         <?php } else { ?>
-            <form method="post" action="../actions/action_adopt_pet.php">
+            <form method="post" action="../actions/pet/action_adopt_pet.php">
                 <h2 class="large-text">PET INFO</h2>
                 <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">    
                 <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>

@@ -9,7 +9,7 @@ draw_header("Register", NULL, array("register.js"));
 ?>
 
 <section class="user-form">
-    <form method="post" action="../actions/action_register.php">
+    <form method="post" action="../actions/user/action_register.php">
         <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
         <label for="name">Name:</label>
         <input type="text" name="name" placeholder="name" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkName()" onBlur="checkName()" oninvalid="invalidName(this);" required>

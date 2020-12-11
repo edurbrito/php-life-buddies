@@ -1,5 +1,5 @@
 <?php
-    include_once('../database/db_pet.php');
+    include_once('../../database/db_pet.php');
 
     if(isset($_GET['name']))
         $name = $_GET['name'];

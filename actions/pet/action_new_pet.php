@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/session.php');
-  include_once('../database/db_pet.php');
+  include_once('../../includes/session.php');
+  include_once('../../database/db_pet.php');
 
   $csrf = $_POST['csrf'];
   if($csrf != $_SESSION['csrf']){
@@ -9,7 +9,7 @@
   }
 
   if(!isset($_SESSION['email'])){
-    die(header("Location: ../pages/login.php"));
+    die(header("Location: ../../pages/login.php"));
   }
   
   $user = $_SESSION['email'];
@@ -30,9 +30,9 @@
       throw new Exception('At least one photo of the pet is required');
     }
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added new pet!');
-    header("Location: ../pages/pet.php?pet_id={$pet_id}");
+    header("Location: ../../pages/pet.php?pet_id={$pet_id}");
   } catch (Exception $e) {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet! '.$e->getMessage());
-    header('Location: ../pages/new-pet.php');
+    header('Location: ../../pages/new-pet.php');
   }
 ?>

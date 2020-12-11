@@ -9,7 +9,7 @@ draw_header("Login");
 ?>
 
 <section class="user-form">
-    <form method="post" action="../actions/action_login.php">
+    <form method="post" action="../actions/user/action_login.php">
         <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
         <label for="email">Email:</label>
         <input type="email" name="email" placeholder="example@email.com" required>

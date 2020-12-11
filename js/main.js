@@ -54,7 +54,7 @@ notifications.addEventListener('click', () => {
     }
   }
 
-  request.open("GET", "../actions/action_get_notifications.php", true)
+  request.open("GET", "../actions/user/action_get_notifications.php", true)
   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
   request.send();
 })

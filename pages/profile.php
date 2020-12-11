@@ -90,7 +90,7 @@ draw_header("Profile", array('profile.css'),array('register.js'));
     </section>
     <section class="profile-info">
     <?php if ($email != NULL) { ?>
-        <form method="post" action="../actions/action_update_profile.php">
+        <form method="post" action="../actions/user/action_update_profile.php">
             <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
             <label for="name">Name:</label>
             <input type="text" name="name" placeholder="Your Name" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkName()" onBlur="checkName()" oninvalid="invalidName(this);" value="<?= htmlentities($name) ?>" required>

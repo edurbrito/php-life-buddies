@@ -1,6 +1,6 @@
 <?php
-  include_once('../includes/session.php');
-  include_once('../database/db_user.php');
+  include_once('../../includes/session.php');
+  include_once('../../database/db_user.php');
 
   $csrf = $_POST['csrf'];
   if($csrf != $_SESSION['csrf']){
@@ -17,10 +17,10 @@
     $user = getUserInfo($email);
     $_SESSION['name'] = $user['name'];
     $_SESSION['phone_number'] = $user['phone_number'];
-    header('Location: ../pages/profile.php');
+    header('Location: ../../pages/profile.php');
   } else {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');
-    header('Location: ../pages/login.php');
+    header('Location: ../../pages/login.php');
   }
 
 ?>

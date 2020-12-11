@@ -20,7 +20,7 @@
         throw new Exception('Invalid Pet id');
       }
 
-      if(getPetOwner($pet) == $email) {
+      if((getPetOwner($pet) == $email) || (getPetAdopter($pet) == $email)) {
         addAllPetPhotos($email, $pet);
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Photos Uploaded!');
       }

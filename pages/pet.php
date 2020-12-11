@@ -5,6 +5,12 @@ include_once(dirname(__DIR__) . '/database/db_pet.php');
 if (isset($_GET['pet_id'])) {
     $pet_id = $_GET['pet_id'];
     $pet = getPetInfo($pet_id);
+    $owner = null; $adopter = null;
+
+    if (($owner_email = getPetOwner($pet_id)) != null)
+        $owner = getUserInfo($owner_email);
+    if (($adopter_email = getPetAdopter($pet_id)) != null)
+        $adopter = getUserInfo($adopter_email);
 
     if ($pet_id == NULL || $pet == NULL)
         die(header('Location: ./adopt-list.php'));
@@ -14,10 +20,12 @@ if (isset($_GET['pet_id'])) {
     $photos = getPetPhotos($pet_id);
 
     $owns = false;
+    $adopted = false;
     $favorite = false;
 
     if (isset($_SESSION['email'])) {
         $owns = getPetOwner($pet_id) == $_SESSION['email'];
+        $adopted = getPetAdopter($pet_id) == $_SESSION['email'];
         $favorite = isPetFavorite($pet_id, $email);
     }
 
@@ -50,23 +58,27 @@ if (isset($_GET['pet_id'])) {
                     <i class="far fa-star fa-2x" id="favorite"></i>
                 <?php } ?>
             </li>
-            <li>
-                <form method="post" action="../actions/action_more_pet_photos.php" enctype="multipart/form-data">
-                    <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
-                    <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
-                    <section class="add-pet-image">
-                        <h2 class="large-text">Add more images</h2>
-                        <label for="pet-image" class="custom-file-upload"></label>
-                        <input type="file" name="pet-image[]" id="pet-image" onchange="previewImages(this);" multiple>
-                        <section id="images-preview"></section>
-                        <input type="submit" value="Upload" class="large-text">
-                    </section>
-                </form>
-            </li>
+            <?php if ($owns || $adopted) { ?>
+                <li>
+                    <form method="post" action="../actions/action_more_pet_photos.php" enctype="multipart/form-data">
+                        <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
+                        <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
+                        <section class="add-pet-image">
+                            <h2 class="large-text">Add more images</h2>
+                            <label for="pet-image" class="custom-file-upload"></label>
+                            <input type="file" name="pet-image[]" id="pet-image" onchange="previewImages(this);" multiple>
+                            <section id="images-preview"></section>
+                            <input type="submit" value="Upload" class="large-text">
+                        </section>
+                    </form>
+                </li>
+            <?php } ?>
             <li>
                 <h2 class="large-text">PROPOSALS</h2>
-                <?php
-                foreach ($proposals as $proposal) { ?>
+                <?php if (count($proposals) === 0) { ?>
+                    <h4>No Proposals made</h4>
+                <?php } else { ?>
+                <?php foreach ($proposals as $proposal) { ?>
                     <article class="pet-proposals">
                         <a href="./profile.php?user=<?= $proposal['email'] ?>">
                             <h4><?= $proposal['name'] ?></h4>
@@ -84,7 +96,7 @@ if (isset($_GET['pet_id'])) {
                         <?php }  ?>
                         <h6>State: <?= htmlentities($proposal['state']) ?></h6>
                     </article>
-                <?php } ?>
+                <?php } } ?>
             </li>
             <li>
                 <h2 class="large-text">QUESTIONS</h2>
@@ -130,8 +142,26 @@ if (isset($_GET['pet_id'])) {
         <?php } else { ?>
             <form method="post" action="../actions/action_adopt_pet.php">
                 <h2 class="large-text">PET INFO</h2>
-                <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">            
+                <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">    
                 <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
+                <section class="user-adopter">
+                    <h2>Owner:</h2>
+                    <?php if ($owner != null) { ?>
+                    <a href="./profile.php?user=<?= $owner['email'] ?>">
+                        <h2><?= $owner['name'] ?></h2>
+                    </a>
+                    <?php } else { ?>
+                        <h2>None</h2>
+                    <?php }  ?>
+                    <h2>Adopter:</h2>
+                    <?php if ($adopter != null) { ?>
+                    <a href="./profile.php?user=<?= $adopter['email'] ?>">
+                        <h2><?= $adopter['name'] ?></h2>
+                    </a>
+                    <?php } else { ?>
+                        <h2>None</h2>
+                    <?php }  ?>
+                </section>
                 <label for="name">Name:</label>
                 <p><?= htmlentities($pet['name']) ?></p>
                 <label for="species">Species:</label>

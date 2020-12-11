@@ -60,6 +60,10 @@
   justify-content: center;
 }
 
+.profile-info h2 {
+  margin-bottom: 3rem;
+}
+
 .profile-info form {
   width: 60%;
 }

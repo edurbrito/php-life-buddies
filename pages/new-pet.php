@@ -19,15 +19,15 @@
 
         <section class="pet-info">
             <label for="name">Name:</label>
-            <input type="text" id="name" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkName()" onBlur="checkName()" oninvalid="invalidName(this);" name="name" placeholder="Max, Kitty, Sky, Nemo..." required>
+            <input type="text" name="name" placeholder="Max, Kitty, Sky, Nemo..." pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkName()" onBlur="checkName()" oninvalid="invalidName(this);" required>
             <label for="species">Species:</label>
-            <input type="text" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkSpecies()" onBlur="checkSpecies()" oninvalid="invalidSpecies(this);" name="species" placeholder="Dog, Cat, Bird, Fish..." required>
+            <input type="text" name="species" placeholder="Dog, Cat, Bird, Fish..." pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkSpecies()" onBlur="checkSpecies()" oninvalid="invalidSpecies(this);" required>
             <label for="age">Age:</label>
-            <input type="text" onkeyup="checkAge()" onBlur="checkAge()" oninvalid="invalidAge(this);" pattern="^\d+ ((y|Y)ears?|YEARS?|(M|m)onths?|MONTHS?|(w|W)eeks?|WEEKS?|(d|D)ays?|DAYS?)$" name="age" placeholder="10 years, 4 months, 2 weeks...">
+            <input type="text" name="age" placeholder="10 years, 4 months, 2 weeks..." pattern="^[a-zA-ZÀ-ú\d' ]+$" onkeyup="checkAge()" onBlur="checkAge()" oninvalid="invalidAge(this);">
             <label for="color">Color:</label>
-            <input type="text" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkColor()" onBlur="checkColor()" oninvalid="invalidColor(this);" name="color" placeholder="Brown, Black, Yellow, Orange...">
+            <input type="text" name="color" placeholder="Brown, Black, Yellow, Orange..." pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkColor()" onBlur="checkColor()" oninvalid="invalidColor(this);">
             <label for="location">Location:</label>
-            <input type="text" onkeyup="checkLocation()" onBlur="checkLocation()" oninvalid="invalidLocation(this);" pattern="^(RUA|Rua|R.|AVENIDA|Avenida|AV.|TRAVESSA|Travessa|TRAV.|Trav.) ([a-zA-Z_\s]+)[, ]+(\d+)\s?([-\/\da-zDA-Z\\ ]+)?$" name="location" placeholder="Pick up address eg: Rua D Joao, 12" required>
+            <input type="text" name="location" placeholder="Pick up address" pattern="^[a-zA-ZÀ-ú\d' ]+$$" onkeyup="checkLocation()" onBlur="checkLocation()" oninvalid="invalidLocation(this);" required>
             <input type="submit" value="Submit" class="large-text">
         </section>
     </form>

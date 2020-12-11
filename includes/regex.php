@@ -38,12 +38,8 @@
     return preg_match("/^\d+$/", $id);
   }
 
-  function is_address($name){
-    return preg_match("/^(RUA|Rua|R.|AVENIDA|Avenida|AV.|TRAVESSA|Travessa|TRAV.|Trav.) ([a-zA-Z_\s]+)[, ]+(\d+)\s?([-\/\da-zDA-Z\\ ]+)?$/", $name);
-  }
-
-  function is_valid_age($age){
-    return preg_match("/^\d+ ((y|Y)ears?|YEARS?|(M|m)onths?|MONTHS?|(w|W)eeks?|WEEKS?|(d|D)ays?|DAYS?)$/", $age);
+  function is_alphanumeric($name){
+    return preg_match("/^[a-zA-ZÀ-ú\d' ]+$/", $name);
   }
   
   function invalid_pet($name, $species, $age, $color, $location) {
@@ -56,10 +52,10 @@
     else if (!is_name($color)) {
       return "Invalid Color!";
     }
-    else if (!is_valid_age($age)) {
+    else if (!is_alphanumeric($age)) {
       return "Invalid Age!";
     }
-    else if (!is_address($location)) {
+    else if (!is_alphanumeric($location)) {
       return "Invalid Location!";
     }
 

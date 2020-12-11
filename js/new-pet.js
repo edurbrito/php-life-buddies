@@ -27,7 +27,7 @@ function previewImages(input) {
 // Invalid Names and Errors associated
 function invalidName(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('name');
+    var input = document.getElementsByName('name')[0];
     if(input.validity.patternMismatch){
         input.setCustomValidity("Please write a valid pet name. The name must only contain letters e.g. Max");
    }    
@@ -38,7 +38,7 @@ function invalidName(textbox) {
 }
 
 function checkName(){
-    var name = document.getElementById("name");
+    var name = document.getElementsByName('name')[0];
     invalidName(name);
     if (name.validity.patternMismatch){
         name.style.color = 'red';

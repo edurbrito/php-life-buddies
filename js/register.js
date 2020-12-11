@@ -1,7 +1,7 @@
 // Invalid Names and Errors associated
 function invalidName(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('name');
+    var input = document.getElementsByName('name')[0];
     if(input.validity.patternMismatch){
         input.setCustomValidity("Please write your real name. Your name must only contain letters e.g. John Smith");
    }    
@@ -12,7 +12,7 @@ function invalidName(textbox) {
 }
 
 function checkName(){
-    var name = document.getElementById("name");
+    var name = document.getElementsByName("name")[0];
     invalidName(name);
     if (name.validity.patternMismatch){
         name.style.color = 'red';
@@ -25,7 +25,7 @@ function checkName(){
 
   function invalidPhone(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('phone');
+    var input = document.getElementsByName('phone')[0];
     if(input.validity.patternMismatch){
         if(input.value.length<9)
             input.setCustomValidity("Your phone number should have exactly 9 digits e.g. 923456789");
@@ -41,7 +41,7 @@ function checkName(){
 }
   
 function checkPhone(){
-    var phone = document.getElementById("phone");
+    var phone = document.getElementsByName("phone")[0];
     invalidPhone(phone);
     if (phone.validity.patternMismatch){
         phone.style.color = 'red';
@@ -54,7 +54,7 @@ function checkPhone(){
 
 function invalidPhone(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('phone');
+    var input = document.getElementsByName('phone')[0];
     if(input.validity.patternMismatch){
         if(input.value.length<9)
             input.setCustomValidity("Your phone number should have exactly 9 digits e.g. 923456789");
@@ -70,7 +70,7 @@ function invalidPhone(textbox) {
 }
   
 function checkEmail(){
-    var email = document.getElementById("email");
+    var email = document.getElementsByName("email")[0];
     if (email.validity.patternMismatch){
         email.style.color = 'red';
     }
@@ -86,7 +86,9 @@ function hasNumber(myString) {
 
 function invalidPassword(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementById('password');
+    var input = document.getElementsByName('password')[0];
+    if (input==null)
+        input = document.getElementsByName('new-password')[0];
     if(input.validity.patternMismatch){
         if (input.value.length<8)
         {
@@ -107,6 +109,8 @@ function invalidPassword(textbox) {
 }
 
 function checkPassword(){
-    var password = document.getElementById("password");
+    var password = document.getElementsByName("password")[0];
+    if (password==null)
+        password = document.getElementsByName('new-password')[0];
     invalidPassword(password);
   }

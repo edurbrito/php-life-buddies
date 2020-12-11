@@ -16,7 +16,7 @@ if (isset($_GET['pet_id'])) {
     $owns = getPetOwner($pet_id) == $_SESSION['email'];
     $favorite = isPetFavorite($pet_id, $email);
 
-    draw_header("Pet Profile", array('pet.css'), array('pet.js'));
+    draw_header("Pet Profile", array('pet.css'), array('pet.js','new-pet.js'));
 } else {
     die(header('Location: ./adopt-list.php'));
 }
@@ -98,15 +98,15 @@ if (isset($_GET['pet_id'])) {
                 <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
                 <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
                 <label for="name">Name:</label>
-                <input type="text" name="name" placeholder="John Doe The Second" required value="<?= htmlentities($pet['name']) ?>">
+                <input type="text" name="name" placeholder="John Doe The Second" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkName()" onBlur="checkName()" oninvalid="invalidName(this);" required value="<?= htmlentities($pet['name']) ?>">
                 <label for="species">Species:</label>
-                <input type="text" name="species" placeholder="Bird" required value="<?= htmlentities($pet['species']) ?>">
+                <input type="text" name="species" placeholder="Bird" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkSpecies()" onBlur="checkSpecies()" oninvalid="invalidSpecies(this);" required value="<?= htmlentities($pet['species']) ?>">
                 <label for="age">Age:</label>
-                <input type="text" name="age" placeholder="1 year" required value="<?= htmlentities($pet['age']) ?>">
+                <input type="text" name="age" placeholder="1 year" pattern="^[a-zA-ZÀ-ú\d' ]+$" onkeyup="checkAge()" onBlur="checkAge()" oninvalid="invalidAge(this);" required value="<?= htmlentities($pet['age']) ?>">
                 <label for="color">Color:</label>
-                <input type="text" name="color" placeholder="Blue" required value="<?= htmlentities($pet['color']) ?>">
+                <input type="text" name="color" placeholder="Blue" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkColor()" onBlur="checkColor()" oninvalid="invalidColor(this);" required value="<?= htmlentities($pet['color']) ?>">
                 <label for="location">Location:</label>
-                <input type="text" name="location" placeholder="Down the Street" required value="<?= htmlentities($pet['location']) ?>">
+                <input type="text" name="location" placeholder="Down the Street" pattern="^[a-zA-ZÀ-ú\d' ]+$$" onkeyup="checkLocation()" onBlur="checkLocation()" oninvalid="invalidLocation(this);" required value="<?= htmlentities($pet['location']) ?>">
                 <input type="submit" value="Update" class="large-text">
             </form>
         <?php } else { ?>

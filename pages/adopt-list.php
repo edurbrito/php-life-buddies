@@ -37,10 +37,9 @@ $pets = getAllPets();
       <input type="text" id="location" name="location" list="suggestions-location">
       <datalist id="suggestions-location"></datalist>
     </div>
-    <br/>
     <label for="match_type">Match Any Criteria:</label>
     <input type="checkbox" id="match_type" name="match_type">
-    <input type="submit" class="large-text" value="Search">
+    <input type="submit" value="Search">
   </form>
 </section>
 

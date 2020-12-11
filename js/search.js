@@ -164,10 +164,9 @@ function locationsReceived() {
     let list = document.getElementById("suggestions-location")
     list.innerHTML = ""
 
-    for(location in locations) {
+    for(loc in locations) {
         let item = document.createElement("option")
-        item.innerHTML = locations[location].location
-        console.log(item)
+        item.innerHTML = locations[loc].location
         list.appendChild(item)
     }
 }

@@ -1,14 +1,14 @@
 .adopt-list, #search-container {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: auto;
+  margin-right: auto;
   width: 80%;
 }
 
 section#search-container {
-  margin-left: 15%;
-  margin-right: 10%;
+  margin-left: auto;
+  margin-right: auto;
   width: 75%; 
 } 
 
@@ -18,8 +18,19 @@ section#search-container form .group{
 }
 
 input[type="submit"] {
-  display: block;
-  margin: 0 auto;
+  font-size: 2rem;
+  color: white;
+  background-color: var(--green-color);
+  font-weight: bolder;
+  border-radius: 3em;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 0;  
 }
 
 .adopt-list-item {

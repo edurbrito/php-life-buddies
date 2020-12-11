@@ -91,7 +91,7 @@ footer {
   text-align: center;
 }
 
-.Text1 {
+.text1 {
   position: absolute;
   top: 45%;
   left: 8%;
@@ -99,7 +99,7 @@ footer {
   max-width: 40%;
 }
 
-.Text2 {
+.text2 {
   position: absolute;
   height: 35%;
   max-width: 25%;
@@ -108,11 +108,34 @@ footer {
 }
 
 .top-banner .large-text {
+  position: absolute;
   font-weight: bold;
   font-size: 4em;
   width: 45%;
-  top: 92%;
-  left: 30%;
+  bottom: 0.5em;
+  left: 1.5em;
+}
+
+@media (max-width: 768px) {
+
+  .text1 {
+    top: 30%;
+    left: 8%;
+  }
+  
+  .text2 {
+    top: 40%;
+    left: 70%;
+  }
+
+  .top-banner .large-text {
+    font-weight: bold;
+    font-size: 2em;
+    width: fit-content;
+    position: relative;
+    bottom: auto;
+    left: auto;
+  }
 }
 
 .user-form {

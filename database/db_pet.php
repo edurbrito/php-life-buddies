@@ -297,7 +297,7 @@
   function getLocations($location) {
     $db = Database::instance()->db();
     
-    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(location) LIKE upper(?) LIMIT 5");
+    $stmt = $db->prepare("SELECT DISTINCT location FROM Pet WHERE upper(location) LIKE upper(?) LIMIT 5");
     $stmt->execute(array("$location%"));
     $locations = $stmt->fetchAll();
 

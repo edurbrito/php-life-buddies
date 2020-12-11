@@ -1,7 +1,7 @@
 <?php
 
   function clean_text($old_text) {
-    return preg_replace('/[^\w\d\s\.!,\?]/', '', $old_text);
+    return preg_replace('/[^À-ú\w\d\s\.!,\?]/', '', $old_text);
   }
 
   function is_name($name){

@@ -27,8 +27,9 @@
         $color = clean_text($_POST['color']);
         $location = clean_text($_POST['location']);
 
-        if(!validate_pet($name, $species, $age, $color, $location))
-          throw new Exception('Matching error in on of the inputs');
+        if ($msg = invalid_pet($name, $species, $age, $color, $location)) {
+          throw new Exception($msg);
+        }
 
         updatePet($pet, $name, $species, $age, $color, $location, $email);
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Pet Updated!');
@@ -38,8 +39,7 @@
       }
 
   } catch (Exception $e) {
-    // die($e->getMessage());
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update pet!');
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add pet! '.$e->getMessage());
   }
   header("Location: ../pages/pet.php?pet_id={$pet}");
 ?>

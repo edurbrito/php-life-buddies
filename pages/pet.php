@@ -13,10 +13,15 @@ if (isset($_GET['pet_id'])) {
     $questions = getPetQuestions($pet_id);
     $photos = getPetPhotos($pet_id);
 
-    $owns = getPetOwner($pet_id) == $_SESSION['email'];
-    $favorite = isPetFavorite($pet_id, $email);
+    $owns = false;
+    $favorite = false;
 
-    draw_header("Pet Profile", array('pet.css'), array('pet.js'));
+    if (isset($_SESSION['email'])) {
+        $owns = getPetOwner($pet_id) == $_SESSION['email'];
+        $favorite = isPetFavorite($pet_id, $email);
+    }
+
+    draw_header("Pet Profile", array('pet.css'), array('pet.js', 'new-pet.js'));
 } else {
     die(header('Location: ./adopt-list.php'));
 }
@@ -44,6 +49,19 @@ if (isset($_GET['pet_id'])) {
                 <?php } else { ?>
                     <i class="far fa-star fa-2x" id="favorite"></i>
                 <?php } ?>
+            </li>
+            <li>
+                <form method="post" action="../actions/action_more_pet_photos.php" enctype="multipart/form-data">
+                    <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
+                    <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
+                    <section class="add-pet-image">
+                        <h2 class="large-text">Add more images</h2>
+                        <label for="pet-image" class="custom-file-upload"></label>
+                        <input type="file" name="pet-image[]" id="pet-image" onchange="previewImages(this);" multiple>
+                        <section id="images-preview"></section>
+                        <input type="submit" value="Upload" class="large-text">
+                    </section>
+                </form>
             </li>
             <li>
                 <h2 class="large-text">PROPOSALS</h2>

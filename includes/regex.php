@@ -1,17 +1,33 @@
 <?php
 
+  /**
+   * Removes not allowed characters
+  */
   function clean_text($old_text) {
     return preg_replace('/[^À-ú\w\d\s\.!,\?]/', '', $old_text);
   }
 
+  /**
+   * Name needs to contain only letters and/or spaces
+  */
   function is_name($name){
     return preg_match("/^[a-zA-Z-'À-ú ]+$/", $name);
   }
 
+  /**
+   * Valid email as verified by php
+   * built in function 
+  */
   function is_email($email){
     return filter_var($email, FILTER_VALIDATE_EMAIL);
   }
 
+  /**
+   * Phone needs to match:
+   * 9 digits number
+   * or
+   * DDD-DDD-DDD
+  */
   function is_phone_number($phone_number) {
     return preg_match("/^\d{9}|\d{3}-\d{3}-\d{3}$/", $phone_number);
   }
@@ -34,10 +50,17 @@
     return is_name($name) && is_email($email) && is_phone_number($phone_number) && is_password($password);
   }
 
+  /**
+   * Id needs to be a number
+  */
   function is_id($id){
     return preg_match("/^\d+$/", $id);
   }
 
+  /**
+   * Alphanumeric values contain
+   * letters and/or numbers
+  */
   function is_alphanumeric($name){
     return preg_match("/^[a-zA-ZÀ-ú\d' ]+$/", $name);
   }

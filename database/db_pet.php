@@ -122,10 +122,10 @@
     $_SESSION['messages'][] = $msg;
   }
 
-  function isPetFavorite($pet_id, $email) {
+  function isPetFavorite($pet_id, $user) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Favorite WHERE user = ? AND pet_id = ? ');
-    $stmt->execute(array($email, $pet_id));
+    $stmt->execute(array($user, $pet_id));
     
     $pet = $stmt->fetch();
     return $pet != NULL;

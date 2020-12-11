@@ -2,10 +2,6 @@
   include_once(dirname(__DIR__) . '/includes/database.php');
   include_once(dirname(__DIR__) . '/includes/regex.php');
 
-  /**
-   * Verifies if a certain email, password combination
-   * exists in the database. Use the sha1 hashing function.
-   */
   function checkUserPassword($email, $password) {
     $db = Database::instance()->db();
 
@@ -58,37 +54,37 @@
     $stmt->execute(array($name, $phone_number, $newemail));
   }
 
-  function getUserPets($email) {
+  function getUserPets($user) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Pet WHERE user = ?');
-    $stmt->execute(array($email));
+    $stmt->execute(array($user));
 
     $pets = $stmt->fetchAll();
     return $pets;
   }
 
-  function getUserFavorites($email) {
+  function getUserFavorites($user) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Pet, Favorite WHERE Favorite.user = ? AND Pet.id = Favorite.pet_id');
-    $stmt->execute(array($email));
+    $stmt->execute(array($user));
 
     $pets = $stmt->fetchAll();
     return $pets;
   }
 
-  function getUserProposals($email) {
+  function getUserProposals($user) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Pet, AdoptionProposal WHERE AdoptionProposal.user = ? AND Pet.id = AdoptionProposal.pet_id');
-    $stmt->execute(array($email));
+    $stmt->execute(array($user));
 
     $pets = $stmt->fetchAll();
     return $pets;
   }
 
-  function getAdoptedPets($email) {
+  function getAdoptedPets($user) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Pet WHERE adoptedBy = ?');
-    $stmt->execute(array($email));
+    $stmt->execute(array($user));
 
     $pets = $stmt->fetchAll();
     return $pets;

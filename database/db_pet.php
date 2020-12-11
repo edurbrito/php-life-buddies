@@ -257,7 +257,7 @@
   function getSpecies($specie) {
     $db = Database::instance()->db();
     
-    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(species) LIKE upper(?) LIMIT 5");
+    $stmt = $db->prepare("SELECT DISTINCT species FROM Pet WHERE upper(species) LIKE upper(?) LIMIT 5");
     $stmt->execute(array("$specie%"));
     $species = $stmt->fetchAll();
 
@@ -267,7 +267,7 @@
   function getNames($name) {
     $db = Database::instance()->db();
     
-    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(name) LIKE upper(?) LIMIT 5");
+    $stmt = $db->prepare("SELECT DISTINCT name FROM Pet WHERE upper(name) LIKE upper(?) LIMIT 5");
     $stmt->execute(array("$name%"));
     $names = $stmt->fetchAll();
 
@@ -277,7 +277,7 @@
   function getAges($age) {
     $db = Database::instance()->db();
     
-    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(age) LIKE upper(?) LIMIT 5");
+    $stmt = $db->prepare("SELECT DISTINCT age FROM Pet WHERE upper(age) LIKE upper(?) LIMIT 5");
     $stmt->execute(array("$age%"));
     $ages = $stmt->fetchAll();
 
@@ -287,7 +287,7 @@
   function getColors($color) {
     $db = Database::instance()->db();
     
-    $stmt = $db->prepare("SELECT * FROM Pet WHERE upper(color) LIKE upper(?) LIMIT 5");
+    $stmt = $db->prepare("SELECT DISTINCT color FROM Pet WHERE upper(color) LIKE upper(?) LIMIT 5");
     $stmt->execute(array("$color%"));
     $colors = $stmt->fetchAll();
 

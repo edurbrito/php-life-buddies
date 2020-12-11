@@ -70,7 +70,6 @@ function namesReceived() {
     for(name in names) {
         let item = document.createElement("option")
         item.innerHTML = names[name].name
-        console.log(item)
         list.appendChild(item)
     }
 }
@@ -95,7 +94,6 @@ function speciesReceived() {
     for(specie in species) {
         let item = document.createElement("option")
         item.innerHTML = species[specie].species
-        console.log(item)
         list.appendChild(item)
     }
 }
@@ -119,7 +117,6 @@ function colorsReceived() {
     for(color in colors) {
         let item = document.createElement("option")
         item.innerHTML = colors[color].color
-        console.log(item)
         list.appendChild(item)
     }
 }
@@ -143,7 +140,6 @@ function agesReceived() {
     for(age in ages) {
         let item = document.createElement("option")
         item.innerHTML = ages[age].age
-        console.log(item)
         list.appendChild(item)
     }
 }

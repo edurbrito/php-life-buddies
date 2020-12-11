@@ -13,6 +13,7 @@ if (isset($_GET['user']) && (!isset($_SESSION['email']) || ($_SESSION['email'] !
     $pets = getUserPets($user['email']);
     $favorites = getUserFavorites($user['email']);
     $proposals = getUserProposals($user['email']);
+    $adopted = getAdoptedPets($user['email']);
 }
 else if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
@@ -22,6 +23,7 @@ else if (isset($_SESSION['email'])) {
     $pets = getUserPets($email);
     $favorites = getUserFavorites($email);
     $proposals = getUserProposals($email);
+    $adopted = getAdoptedPets($email);
 } else {
     die(header('Location: ../index.php'));
 }
@@ -34,36 +36,55 @@ draw_header("Profile", array('profile.css'),array('register.js'));
         <ul>
             <li>
                 <h2 class="large-text"><?php if ($email != NULL) { ?>YOUR<?php } ?> POSTS</h2>
-                <?php
-                foreach ($pets as $pet) { ?>
+                <?php if (count($pets) === 0) { ?>
+                    <h4>No Pets sent for Adoption</h4>
+                <?php } else { ?>
+                <?php foreach ($pets as $pet) { ?>
                     <article class="profile-post">
                         <img src="../css/images/dog.svg" />
                         <h4><?= htmlentities($pet['name']) ?>, <?= htmlentities($pet['age']) ?></h4>
                         <a href="/pages/pet.php?pet_id=<?= htmlentities($pet['id']) ?>"><button>View Post</button></a>
                     </article>
-                <?php } ?>
+                <?php } } ?>
             </li>
             <li>
                 <h2 class="large-text"><?php if ($email != NULL) { ?>YOUR<?php } ?> FAVORITES</h2>
-                <?php
-                foreach ($favorites as $pet) { ?>
+                <?php if (count($favorites) === 0) { ?>
+                    <h4>No Pets added to Favorites</h4>
+                <?php } else { ?>
+                <?php foreach ($favorites as $pet) { ?>
                     <article class="profile-post">
                         <img src="../css/images/dog.svg" />
                         <h4><?= htmlentities($pet['name']) ?>, <?= htmlentities($pet['age']) ?></h4>
                         <a href="/pages/pet.php?pet_id=<?= htmlentities($pet['id']) ?>"><button>View Post</button></a>
                     </article>
-                <?php } ?>
+                <?php } } ?>
             </li>
             <li>
                 <h2 class="large-text"><?php if ($email != NULL) { ?>YOUR<?php } ?> PROPOSALS</h2>
-                <?php
-                foreach ($proposals as $pet) { ?>
+                <?php if (count($proposals) === 0) { ?>
+                    <h4>No Proposals</h4>
+                <?php } else { ?>
+                <?php foreach ($proposals as $pet) { ?>
                     <article class="profile-post">
                         <img src="../css/images/dog.svg" />
                         <h4><?= htmlentities($pet['name']) ?>, <?= htmlentities($pet['age']) ?></h4>
                         <a href="/pages/pet.php?pet_id=<?= htmlentities($pet['id']) ?>"><button>View Post</button></a>
                     </article>
-                <?php } ?>
+                <?php } } ?>
+            </li>
+            <li>
+                <h2 class="large-text"><?php if ($email != NULL) { ?>YOUR<?php } ?> ADOPTED PETS</h2>
+                <?php if (count($adopted) === 0) { ?>
+                    <h4>No Adopted Pets</h4>
+                <?php } else { ?>
+                <?php foreach ($adopted as $pet) { ?>
+                    <article class="profile-post">
+                        <img src="../css/images/dog.svg" />
+                        <h4><?= htmlentities($pet['name']) ?>, <?= htmlentities($pet['age']) ?></h4>
+                        <a href="/pages/pet.php?pet_id=<?= htmlentities($pet['id']) ?>"><button>View Post</button></a>
+                    </article>
+                <?php } } ?>
             </li>
         </ul>
     </section>
@@ -86,6 +107,7 @@ draw_header("Profile", array('profile.css'),array('register.js'));
     <?php } else { ?>
         <form>
             <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
+            <h2 class="large-text">User Info</h2>
             <label for="name">Name:</label>
             <p><?= htmlentities($user['name']) ?></p>
             <label for="phone">Phone number:</label>

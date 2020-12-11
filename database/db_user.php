@@ -85,6 +85,15 @@
     return $pets;
   }
 
+  function getAdoptedPets($email) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Pet WHERE adoptedBy = ?');
+    $stmt->execute(array($email));
+
+    $pets = $stmt->fetchAll();
+    return $pets;
+  }
+
   function countNotifications($user){
     $db = Database::instance()->db();
     

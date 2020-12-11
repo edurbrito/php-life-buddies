@@ -48,6 +48,16 @@
     return $pet['user'];
   }
 
+  function getPetAdopter($pet_id) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT adoptedBy FROM Pet WHERE id = ?');
+    $stmt->execute(array($pet_id));
+
+    $pet = $stmt->fetch();
+    return $pet['adoptedBy'];
+  }
+
   function addPetPhoto($user, $pet_info, $photo){
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT user, adoptedBy FROM Pet WHERE id = ?');

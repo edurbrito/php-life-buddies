@@ -15,6 +15,7 @@
 
   .pet-lists,
   .pet-info,
+  .add-pet-image,
   .pet-info form {
     width: 100vw !important;
   }
@@ -25,6 +26,11 @@
   }
 
   #pet-photos img {
+    width: 100px;
+    height: 100px;
+  }
+
+  #images-preview img {
     width: 100px;
     height: 100px;
   }
@@ -41,8 +47,8 @@
 }
 
 .pet-lists ul li i {
-    position: absolute;
-    top: 0;
+  position: absolute;
+  top: 0;
 }
 
 #pet-photos {
@@ -57,6 +63,55 @@
 #pet-photos img:first-child {
   margin: 0;
   position: relative;
+}
+
+.add-pet-image {
+  display: flex;
+}
+
+.add-pet-image p {
+  text-align: center;
+}
+
+.add-pet-image ,
+.add-pet-image label:first-child {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 0.83em;
+  margin-inline-start: 0px;
+}
+
+#images-preview {
+  text-align: center;
+}
+
+#images-preview img {
+  margin: 2rem;
+  margin-bottom: 0;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  font-size: 2rem;
+  margin-bottom: 0;
+  color: white;
+  background-color: #8f8d8d;
+  font-weight: bolder;
+  border-radius: 3em;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.custom-file-upload:before{
+  content: 'Choose Photos';
 }
 
 .pet-info {
@@ -78,6 +133,37 @@
   flex-direction: column;
   margin-block-start: 0.83em;
   margin-inline-start: 0px;
+}
+
+.user-adopter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-adopter > h2 {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.user-adopter h2:nth-of-type(2) {
+  margin-left: 5rem;
+}
+
+.user-adopter :nth-child(2), .user-adopter :nth-child(4) {
+  font-weight: normal;
+}
+
+.user-adopter a:hover {
+  border: solid var(--green-color) 1px;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  font-family: var(--sans-font);
+}
+
+.user-adopter a h2 {
+  margin: 0;
+  font-weight: 300;
 }
 
 .pet-comments {
@@ -113,7 +199,7 @@
   margin-right: auto;
 }
 
-.pet-info input[type="submit"] {
+input[type="submit"] {
   background-color: #8f8d8d;
 }
 

@@ -9,8 +9,10 @@ if (isset($_SESSION['email'])) {
   $notifications = countNotifications($email);
 }
 
-$last_message = end($_SESSION['messages']);
-$_SESSION['messages'] = array();
+if (isset($_SESSION['messages'])) {
+  $last_message = end($_SESSION['messages']);
+  $_SESSION['messages'] = array();
+}
 
 function draw_header($page_name, $css_links = NULL, $js_links = NULL)
 {

@@ -23,11 +23,11 @@
             <label for="species">Species:</label>
             <input type="text" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkSpecies()" onBlur="checkSpecies()" oninvalid="invalidSpecies(this);" name="species" placeholder="Dog, Cat, Bird, Fish..." required>
             <label for="age">Age:</label>
-            <input type="text" name="age" placeholder="10 years, 4 months, 2 weeks...">
+            <input type="text" onkeyup="checkAge()" onBlur="checkAge()" oninvalid="invalidAge(this);" pattern="^\d+ ((y|Y)ears?|YEARS?|(M|m)onths?|MONTHS?|(w|W)eeks?|WEEKS?|(d|D)ays?|DAYS?)$" name="age" placeholder="10 years, 4 months, 2 weeks...">
             <label for="color">Color:</label>
-            <input type="text" name="color" placeholder="Brown, Black, Yellow, Orange...">
+            <input type="text" pattern="^[a-zA-Z-'À-ú ]+$" onkeyup="checkColor()" onBlur="checkColor()" oninvalid="invalidColor(this);" name="color" placeholder="Brown, Black, Yellow, Orange...">
             <label for="location">Location:</label>
-            <input type="text" name="location" placeholder="Pick up adress" required>
+            <input type="text" onkeyup="checkLocation()" onBlur="checkLocation()" oninvalid="invalidLocation(this);" pattern="^(RUA|Rua|R.|AVENIDA|Avenida|AV.|TRAVESSA|Travessa|TRAV.|Trav.) ([a-zA-Z_\s]+)[, ]+(\d+)\s?([-\/\da-zDA-Z\\ ]+)?$" name="location" placeholder="Pick up address eg: Rua D Joao, 12" required>
             <input type="submit" value="Submit" class="large-text">
         </section>
     </form>

@@ -62,7 +62,6 @@
 .pet-info {
   display: flex;
   justify-content: center;
-  margin: auto;
 }
 
 .pet-info h2 {

@@ -205,11 +205,9 @@
   function searchPets($matchType, $name, $species, $age, $color, $location){
     $attributes = array();
     if($matchType == 0){
-      array_push($attributes, " AND ");
       $match = "%' AND ";
     }
     else if($matchType == 1){
-      array_push($attributes, " OR ");
       $match = "%' OR ";
     }
 
@@ -223,8 +221,8 @@
     if($index >= 0)
     {
       $value = $attributes[$index];
-      $attributes[$index] = str_replace($match, "%' GROUP BY id;", $value);
-      $query = 'SELECT DISTINCT id, name, age, photo FROM Pet, Photo WHERE id = pet_id' . implode("",$attributes);
+      $attributes[$index] = str_replace($match, "%') GROUP BY id;", $value);
+      $query = 'SELECT DISTINCT id, name, age, photo FROM Pet, Photo WHERE id = pet_id AND (' . implode("",$attributes);
 
       $db = Database::instance()->db();
       $stmt = $db->prepare($query);

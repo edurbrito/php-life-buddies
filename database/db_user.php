@@ -26,6 +26,16 @@
     return $user;
   }
 
+  function getAllUsers() {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM User');
+    $stmt->execute();
+
+    $users = $stmt->fetchAll();
+    return $users;
+  }
+
   function insertUser($email, $password, $name, $phone_number) {
     $db = Database::instance()->db();
 

@@ -37,7 +37,6 @@
     die(json_encode($pets));
 
   } catch (Exception $e) {
-    // die($e->getMessage());
     echo "{}";
   }
   

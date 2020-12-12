@@ -6,9 +6,9 @@
     die('{"type": "error", "content": "Failed to add pet to favorites!"}');
   }
 
-  $email = $_SESSION['email'];
-
   try {
+
+    $email = $_SESSION['email'];
     $pet_id = NULL;
 
     if(isset($_GET['pet_id']))
@@ -18,15 +18,10 @@
       throw new Exception('Invalid Pet id');
     }
 
-    if($pet_id != NULL){
-      $action = addPetToFavorites($email, $pet_id);
-      echo '{"type": "success", "action": "' . $action . '" }';
-    }
-    else{
-      throw new PDOException("No id specified");
-    }
+    $action = addPetToFavorites($email, $pet_id);
+    echo '{"type": "success", "action": "' . $action . '" }';
+
   } catch (Exception $e) {
-    // die($e->getMessage());
     echo '{"type": "error", "content": "Failed to add pet to favorites!"}';
   }
   

@@ -37,7 +37,6 @@
       }
 
   } catch (Exception $e) {
-    // die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update!');
   }
   header('Location: ../../pages/profile.php');

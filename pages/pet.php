@@ -26,7 +26,7 @@ if (isset($_GET['pet_id'])) {
     if (isset($_SESSION['email'])) {
         $owns = getPetOwner($pet_id) == $_SESSION['email'];
         $adopted = getPetAdopter($pet_id) == $_SESSION['email'];
-        $favorite = isPetFavorite($pet_id, $email);
+        $favorite = isPetFavorite($pet_id, $_SESSION['email']);
     }
 
     draw_header("Pet Profile", array('pet.css'), array('pet.js', 'new-pet.js'));

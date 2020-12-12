@@ -29,7 +29,6 @@
             die(json_encode($users));
 
         } catch (Exception $e) {
-            // die($e->getMessage());
             echo "{}";
         }
     }

@@ -10,6 +10,9 @@
   
   if(isset($_GET['match_type']))
     $matchType = clean_text($_GET['match_type']) == "on" ? 1 : 0;
+  else
+    $matchType = 0;
+    
   if(isset($_GET['name']))
     $name = clean_text($_GET['name']);
   if(isset($_GET['species']))

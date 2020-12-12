@@ -3,30 +3,31 @@
 include_once(dirname(__DIR__) . '/templates/tpl_common.php');
 include_once(dirname(__DIR__) . '/database/db_user.php');
 
+$email = $user = NULL;
+$owns = false;
+
 if (isset($_GET['user']) && (!isset($_SESSION['email']) || ($_SESSION['email'] != $_GET['user']))) {
-    $email = NULL;
     $user = getUserInfo($_GET['user']);
     
     if($user == NULL)
         die(header('Location: ../index.php'));
-
-    $pets = getUserPets($user['email']);
-    $favorites = getUserFavorites($user['email']);
-    $proposals = getUserProposals($user['email']);
-    $adopted = getAdoptedPets($user['email']);
+        
+    $email = $user['email'];
 }
 else if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
-    $name = $_SESSION['name'];
-    $phone_number = $_SESSION['phone_number'];
-
-    $pets = getUserPets($email);
-    $favorites = getUserFavorites($email);
-    $proposals = getUserProposals($email);
-    $adopted = getAdoptedPets($email);
+    $user = getUserInfo($email);
+    $owns = true;
 } else {
     die(header('Location: ../index.php'));
 }
+
+$name = $user['name'];
+$phone_number = $user['phone_number'];
+$pets = getUserPets($email);
+$favorites = getUserFavorites($email);
+$proposals = getUserProposals($email);
+$adopted = getAdoptedPets($email);
 
 draw_header("Profile", array('profile.css'),array('register.js'));
 ?>
@@ -35,7 +36,7 @@ draw_header("Profile", array('profile.css'),array('register.js'));
     <section class="profile-lists">
         <ul>
             <li>
-                <h2 class="large-text"><?php if ($email != NULL) { ?>YOUR<?php } ?> POSTS</h2>
+                <h2 class="large-text"><?php if ($owns) { ?>YOUR<?php } ?> POSTS</h2>
                 <?php if (count($pets) === 0) { ?>
                     <h4>No Pets sent for Adoption</h4>
                 <?php } else { ?>
@@ -48,7 +49,7 @@ draw_header("Profile", array('profile.css'),array('register.js'));
                 <?php } } ?>
             </li>
             <li>
-                <h2 class="large-text"><?php if ($email != NULL) { ?>YOUR<?php } ?> FAVORITES</h2>
+                <h2 class="large-text"><?php if ($owns) { ?>YOUR<?php } ?> FAVORITES</h2>
                 <?php if (count($favorites) === 0) { ?>
                     <h4>No Pets added to Favorites</h4>
                 <?php } else { ?>
@@ -61,7 +62,7 @@ draw_header("Profile", array('profile.css'),array('register.js'));
                 <?php } } ?>
             </li>
             <li>
-                <h2 class="large-text"><?php if ($email != NULL) { ?>YOUR<?php } ?> PROPOSALS</h2>
+                <h2 class="large-text"><?php if ($owns) { ?>YOUR<?php } ?> PROPOSALS</h2>
                 <?php if (count($proposals) === 0) { ?>
                     <h4>No Proposals</h4>
                 <?php } else { ?>
@@ -74,7 +75,7 @@ draw_header("Profile", array('profile.css'),array('register.js'));
                 <?php } } ?>
             </li>
             <li>
-                <h2 class="large-text"><?php if ($email != NULL) { ?>YOUR<?php } ?> ADOPTED PETS</h2>
+                <h2 class="large-text"><?php if ($owns) { ?>YOUR<?php } ?> ADOPTED PETS</h2>
                 <?php if (count($adopted) === 0) { ?>
                     <h4>No Adopted Pets</h4>
                 <?php } else { ?>
@@ -89,7 +90,7 @@ draw_header("Profile", array('profile.css'),array('register.js'));
         </ul>
     </section>
     <section class="profile-info">
-    <?php if ($email != NULL) { ?>
+    <?php if ($owns) { ?>
         <form method="post" action="../actions/user/action_update_profile.php">
             <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
             <label for="name">Name:</label>
@@ -109,11 +110,11 @@ draw_header("Profile", array('profile.css'),array('register.js'));
             <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
             <h2 class="large-text">User Info</h2>
             <label for="name">Name:</label>
-            <p><?= htmlentities($user['name']) ?></p>
+            <p><?= htmlentities($name) ?></p>
             <label for="phone">Phone number:</label>
-            <p><?= htmlentities($user['phone_number']) ?></p>
+            <p><?= htmlentities($phone_number) ?></p>
             <label for="email">Email:</label>
-            <p><?= htmlentities($user['email']) ?></p>
+            <p><?= htmlentities($email) ?></p>
         </form>
     <?php }?>
     </section>

@@ -39,8 +39,15 @@
 
     $stmt = $db->prepare('INSERT INTO LoginData VALUES(?, ?)');
     $stmt->execute(array($email, password_hash($password, PASSWORD_DEFAULT, $options)));
-    $stmt = $db->prepare('INSERT INTO User VALUES(?, ?, ?)');
-    $stmt->execute(array($email, $name, $phone_number));
+    try{
+      $stmt = $db->prepare('INSERT INTO User VALUES(?, ?, ?)');
+      $stmt->execute(array($email, $name, $phone_number));
+    }
+    catch(Exception $e){
+      $stmt = $db->prepare('DELETE FROM LoginData WHERE email = ?');
+      $stmt->execute(array($email));
+      throw $e;
+    }
   }
 
   function updateUser($oldemail, $newemail, $password, $name, $phone_number) {
@@ -111,6 +118,38 @@
     $stmt->execute(array($user));
     
     return $notifications;
+  }
+
+  function searchUsers($matchType, $email, $name, $phone_number){
+    $attributes = array();
+    if($matchType == 0){
+      $match = "%' AND ";
+    }
+    else if($matchType == 1){
+      $match = "%' OR ";
+    }
+
+    foreach (array(["email", $email], ["name", $name], ["phone_number", $phone_number]) as $attr) {
+      if($attr[1] != NULL && $attr[1] != ""){
+          array_push($attributes, $attr[0] . " LIKE '%" . $attr[1] . $match); 
+      }
+    }
+
+    $index = count( $attributes ) - 1;
+    if($index >= 0)
+    {
+      $value = $attributes[$index];
+      $attributes[$index] = str_replace($match, "%');", $value);
+      $query = 'SELECT DISTINCT email, name, phone_number FROM User WHERE (' . implode("",$attributes);
+
+      $db = Database::instance()->db();
+      $stmt = $db->prepare($query);
+      $stmt->execute();
+  
+      return $stmt->fetchAll();
+    }
+
+    return NULL;
   }
 
 ?>

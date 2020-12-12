@@ -2,7 +2,7 @@
   include_once('../../includes/session.php');
   include_once('../../database/db_user.php');
 
-  $csrf = $_POST['csrf'];
+  $csrf = isset($_POST['csrf']) ? $_POST['csrf'] : NULL;
   if($csrf != $_SESSION['csrf']){
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update!');
     die(header('Location: ' . $_SERVER['HTTP_REFERER']));
@@ -13,11 +13,12 @@
   }
 
   $email = $_SESSION['email'];
-  $newemail = $_POST['email'];
-  $oldpassword = $_POST['old-password'];
-  $newpassword = $_POST['new-password'] != NULL ? $_POST['new-password'] : $oldpassword;
-  $newname = $_POST['name'];
-  $newphone = $_POST['phone'];
+  
+  $newemail = isset($_POST['email']) ? $_POST['email'] : NULL;
+  $oldpassword = isset($_POST['old-password']) ? $_POST['old-password'] : NULL;
+  $newpassword =  isset($_POST['new-password']) && $_POST['new-password'] != NULL ? $_POST['new-password'] : $oldpassword;
+  $newname = isset($_POST['name']) ? $_POST['name'] : NULL;
+  $newphone = isset($_POST['phone']) ? $_POST['phone'] : NULL;
 
   try {
 
@@ -28,8 +29,7 @@
       if(checkUserPassword($email,$oldpassword)){
         updateUser($email, $newemail, $newpassword, $newname, $newphone);
         $_SESSION['email'] = $newemail;
-        $_SESSION['name'] = $newname;
-        $_SESSION['phone_number'] = $newphone;
+        
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Info Updated!');
       }
       else{

@@ -4,9 +4,8 @@ include_once(dirname(__DIR__) . '/includes/session.php');
 include_once(dirname(__DIR__) . '/database/db_user.php');
 
 if (isset($_SESSION['email'])) {
-  $email = $_SESSION['email'];
-  $name = $_SESSION['name'];
-  $notifications = countNotifications($email);
+  $profile = getUserInfo($_SESSION['email'])['name'];
+  $notifications = countNotifications($_SESSION['email']);
 }
 
 if (isset($_SESSION['messages'])) {
@@ -16,7 +15,7 @@ if (isset($_SESSION['messages'])) {
 
 function draw_header($page_name, $css_links = NULL, $js_links = NULL)
 {
-  global $name, $last_message, $notifications;
+  global $profile, $last_message, $notifications;
   /**
    * Draws the header for all pages. Receives an username
    * if the user is logged in in order to draw the logout
@@ -71,9 +70,9 @@ function draw_header($page_name, $css_links = NULL, $js_links = NULL)
     <header class="site-bar">
       <a href="/" class="logo"><img src="../css/images/dog.svg" /></a>
       <ul class="upper-ul">
-        <?php if ($name != NULL) { ?>
+        <?php if ($profile != NULL) { ?>
           <li>
-            <a href="../pages/profile.php"><?= $name ?></a>
+            <a href="../pages/profile.php"><?= $profile ?></a>
           </li>
           <li>
             <a href="../actions/user/action_logout.php">Logout</a>

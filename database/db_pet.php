@@ -234,7 +234,7 @@
     {
       $value = $attributes[$index];
       $attributes[$index] = str_replace($match, "%') GROUP BY id;", $value);
-      $query = 'SELECT DISTINCT id, name, age, photo FROM Pet, Photo WHERE id = pet_id AND (' . implode("",$attributes);
+      $query = 'SELECT DISTINCT id, name, age, color, species, location, photo, user, adoptedBy FROM Pet, Photo WHERE id = pet_id AND (' . implode("",$attributes);
 
       $db = Database::instance()->db();
       $stmt = $db->prepare($query);

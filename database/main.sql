@@ -17,17 +17,6 @@ CREATE TABLE User(
     CONSTRAINT PhoneNumberUNIQUE UNIQUE (phone_number)
 );
 
-CREATE TABLE Shelter(
-    email               VARCHAR(50) NOT NULL,
-    name                VARCHAR(50) NOT NULL,
-    phone_number        INTEGER NOT NULL,
-    location            VARCHAR(50) NOT NULL,
-
-    CONSTRAINT ShelterPK PRIMARY KEY (email),
-    CONSTRAINT ShelterEmailFK FOREIGN KEY (email) REFERENCES LoginData ON DELETE RESTRICT ON UPDATE CASCADE
-    CONSTRAINT PhoneNumberUNIQUE UNIQUE (phone_number)
-);
-
 CREATE TABLE Pet(
     id                  INTEGER,
     name                VARCHAR(30) DEFAULT 'To be attributed',

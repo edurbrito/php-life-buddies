@@ -110,10 +110,10 @@ footer {
 .top-banner .large-text {
   position: absolute;
   font-weight: bold;
-  font-size: 4em;
-  width: 45%;
+  font-size: 3vw;
+  width: fit-content;
   bottom: 0.5em;
-  left: 1.5em;
+  left: 10vw;
 }
 
 @media (max-width: 768px) {

@@ -120,7 +120,7 @@
     return $notifications;
   }
 
-  function searchUsers($matchType, $email, $name, $phone_number){
+  function searchUsers($matchType, $email, $name, $phone_number) {
     $attributes = array();
     if($matchType == 0){
       $match = "%' AND ";
@@ -131,7 +131,7 @@
 
     foreach (array(["email", $email], ["name", $name], ["phone_number", $phone_number]) as $attr) {
       if($attr[1] != NULL && $attr[1] != ""){
-          array_push($attributes, $attr[0] . " LIKE '%" . $attr[1] . $match); 
+        array_push($attributes, $attr[0] . " LIKE '%" . $attr[1] . $match); 
       }
     }
 
@@ -150,6 +150,13 @@
     }
 
     return NULL;
+  }
+
+  function deleteUser($email) {
+    $db = Database::instance()->db();
+    
+    $stmt = $db->prepare('DELETE FROM LoginData WHERE email = ?');
+    $stmt->execute(array($email));
   }
 
 ?>

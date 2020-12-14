@@ -139,6 +139,11 @@ if (isset($_GET['pet_id'])) {
                 <input type="text" name="location" placeholder="Down the Street" pattern="^[a-zA-ZÀ-ú\d' ]+$$" onkeyup="checkLocation()" onBlur="checkLocation()" oninvalid="invalidLocation(this);" required value="<?= htmlentities($pet['location']) ?>">
                 <input type="submit" value="Update" class="large-text">
             </form>
+            <form id = "remove-pet" method="post" action="../actions/pet/action_remove_pet.php">
+                <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
+                <input type="text" name="pet_id" value="<?= htmlentities($pet_id) ?>" hidden>
+                <input type="submit" value="Remove Pet" class="large-text">
+            </form>
         <?php } else { ?>
             <form method="post" action="../actions/pet/action_adopt_pet.php">
                 <h2 class="large-text">PET INFO</h2>

@@ -116,18 +116,20 @@ input[type="file"] {
 
 .pet-info {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .pet-info h2 {
   margin-bottom: 1rem;
 }
 
-.pet-info form {
+.pet-info form:first-of-type {
   width: 60%;
 }
 
-.pet-info form,
+.pet-info form:first-child,
 .pet-info form label:first-child {
   display: flex;
   flex-direction: column;
@@ -164,6 +166,12 @@ input[type="file"] {
 .user-adopter a h2 {
   margin: 0;
   font-weight: 300;
+}
+
+#remove-pet input[type="submit"] {
+  background-color:  #920000;
+  margin: 0;
+  margin-top: 4rem;
 }
 
 .pet-comments {

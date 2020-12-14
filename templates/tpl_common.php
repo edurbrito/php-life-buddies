@@ -103,7 +103,7 @@ function draw_header($page_name, $css_links = NULL, $js_links = NULL)
           </a>
         </li>
         <li>
-          <a href="/">
+          <a href="/pages/contacts.php">
             Contact Us
           </a>
         </li>

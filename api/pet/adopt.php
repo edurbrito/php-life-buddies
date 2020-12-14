@@ -3,7 +3,7 @@
 include_once('../../includes/session.php');
 include_once('../../database/db_pet.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   try {
     $csrf = isset($_GET['token']) ? $_GET['token'] : NULL;

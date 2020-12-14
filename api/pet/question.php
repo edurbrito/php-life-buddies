@@ -3,7 +3,7 @@
 include_once('../../includes/session.php');
 include_once('../../database/db_pet.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   try {
     $csrf = isset($_GET['token']) ? $_GET['token'] : NULL;
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       throw new Exception('Invalid Pet id');
     }
 
-    $question = clean_text($_POST['question']);
+    $question = clean_text($_GET['question']);
 
     addPetQuestion($email, $pet_id, $question);
 

@@ -3,7 +3,7 @@
 include_once('../../includes/session.php');
 include_once('../../database/db_user.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $email = isset($_GET['email']) ? $_GET['email'] : NULL;
     $password = isset($_GET['password']) ? $_GET['password'] : NULL;

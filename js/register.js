@@ -3,7 +3,7 @@ function invalidName(textbox) {
     textbox.setCustomValidity('');
     var input = document.getElementsByName('name')[0];
     if(input.validity.patternMismatch){
-        input.setCustomValidity("Please write your real name. Your name must only contain letters e.g. John Smith");
+        input.setCustomValidity("Please write your real name. Your name must only contain letters (e.g. John Smith)");
    }    
    else {
     input.setCustomValidity('');
@@ -32,7 +32,7 @@ function checkName(){
         else if(input.value.length>9)
             input.setCustomValidity("Your phone number should have exactly 9 digits e.g. 923456789");
         else
-            input.setCustomValidity("Your phone number should be valid (which means your second number should be either 1,2,3 or 6)");
+            input.setCustomValidity("Your phone number should be valid (starting by 91, 92, 93 or 96)");
    }    
    else {
     input.setCustomValidity('');
@@ -52,16 +52,11 @@ function checkPhone(){
   
 // Invalid Emails and Errors associated
 
-function invalidPhone(textbox) {
+function invalidEmail(textbox) {
     textbox.setCustomValidity('');
-    var input = document.getElementsByName('phone')[0];
+    var input = document.getElementsByName('email')[0];
     if(input.validity.patternMismatch){
-        if(input.value.length<9)
-            input.setCustomValidity("Your phone number should have exactly 9 digits e.g. 923456789");
-        else if(input.value.length>9)
-            input.setCustomValidity("Your phone number should have exactly 9 digits e.g. 923456789");
-        else
-            input.setCustomValidity("Your phone number should be valid (which means your second number should be either 1,2,3 or 6)");
+        input.setCustomValidity("Your email adress should be valid");
    }    
    else {
     input.setCustomValidity('');
@@ -71,6 +66,7 @@ function invalidPhone(textbox) {
   
 function checkEmail(){
     var email = document.getElementsByName("email")[0];
+    invalidEmail(email);
     if (email.validity.patternMismatch){
         email.style.color = 'red';
     }

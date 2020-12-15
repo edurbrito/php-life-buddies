@@ -16,7 +16,7 @@ draw_header("Register", NULL, array("register.js"));
         <label for="phone">Phone number:</label>
         <input type="tel" name="phone" placeholder="912345678" pattern="[9]{1}[1,2,3,6]{1}[0-9]{7}" onkeyup="checkPhone()" onBlur="checkPhone()" oninvalid="invalidPhone(this);" required>
         <label for="email">Email:</label>
-        <input type="email" name="email" placeholder="example@email.com" pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" onkeyup="checkEmail()" onBlur="checkEmail()" required>
+        <input type="email" name="email" placeholder="example@email.com" pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" onkeyup="checkEmail()" onBlur="checkEmail()" oninvalid="invalidEmail(this);" required>
         <label for="password">Password:</label>
         <input type="password" name="password" placeholder="password" pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$" onkeyup="checkPassword()" onBlur="checkPassword()" oninvalid="invalidPassword(this);" required>
         <input type="submit" value="Register" class="large-text">

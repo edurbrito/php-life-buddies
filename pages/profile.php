@@ -98,7 +98,7 @@ draw_header("Profile", array('profile.css'),array('register.js'));
             <label for="phone">Phone number:</label>
             <input type="tel" name="phone" placeholder="912345678" pattern="[9]{1}[1,2,3,6]{1}[0-9]{7}" onkeyup="checkPhone()" onBlur="checkPhone()" oninvalid="invalidPhone(this);" value="<?= htmlentities($phone_number) ?>" required>
             <label for="email">Email:</label>
-            <input type="email" name="email" placeholder="example@email.com" pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" onkeyup="checkEmail()" onBlur="checkEmail()" value="<?= htmlentities($email) ?>" required>
+            <input type="email" name="email" placeholder="example@email.com" pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" onkeyup="checkEmail()" onBlur="checkEmail()" oninvalid="invalidEmail(this);" value="<?= htmlentities($email) ?>" required>
             <label for="old-password">Current Password:</label>
             <input type="password" name="old-password" placeholder="Verify your current password" required>
             <label for="new-password">New Password:</label>

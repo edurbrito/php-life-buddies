@@ -23,5 +23,7 @@ draw_header("Contact Us", array('contacts.css'));
         You can find all website and database informations in our <a target="_blank" rel="noopener noreferrer" href = "https://github.com/FEUP-LTW/ltw-project-g62"> GitHub repository</a>.
 </div>
     
-    
+<?php
+    draw_footer();
+?>
     

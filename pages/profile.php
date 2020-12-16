@@ -119,6 +119,12 @@ draw_header("Profile", array('profile.css'),array('register.js'));
     <?php }?>
     </section>
 </section>
+<?php if ($owns) { ?>
+    <form id = "delete-account" method="post" action="../actions/user/action_delete_profile.php">
+        <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">
+        <input type="submit" value="Delete Account" class="large-text">
+    </form>
+<?php }?>
 
 <?php
 draw_footer();

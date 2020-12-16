@@ -79,3 +79,13 @@
 .profile-info form input[type="submit"] {
   background-color:  #8f8d8d;
 }
+
+#delete-account {
+  text-align: center;
+}
+
+#delete-account input[type="submit"] {
+  background-color:  #920000;
+  margin: 0;
+  margin-top: 2rem;
+}

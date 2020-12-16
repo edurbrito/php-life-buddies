@@ -29,5 +29,5 @@ draw_header("Register", NULL, array("register.js"));
 
 
 <?php
-draw_footer();
+    draw_footer();
 ?>

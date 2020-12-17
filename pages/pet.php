@@ -84,7 +84,7 @@ if (isset($_GET['pet_id'])) {
                             <h4><?= $proposal['name'] ?></h4>
                         </a>
                         <?php
-                        if ($owns && $pet['adoptedBy'] == NULL) {
+                        if ($owns && $pet['adoptedBy'] == NULL && $proposal['state'] == "Waiting for Decision") {
                         ?>
                             <form class="questions-box" method="post" action="../actions/pet/action_manage_proposal.php?adopter=<?= htmlentities($proposal['email']) ?>">
                                 <input hidden name="csrf" value="<?= $_SESSION['csrf'] ?>">

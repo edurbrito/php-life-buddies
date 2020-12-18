@@ -1,0 +1,91 @@
+.profile-container {
+  display: flex;
+}
+
+.profile-lists, .profile-info {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    width: 100vw !important;
+    flex-direction: column;
+  }
+
+  .profile-lists,
+  .profile-info,
+  .profile-info form {
+    width: 100vw !important;
+  }
+
+  .profile-info form {
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+}
+
+.profile-lists ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+}
+
+.profile-post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-post img {
+  width: 2.5em;
+}
+
+.profile-post h4 {
+  padding: 0 1rem 0 1rem;
+  font-weight: normal;
+}
+
+.profile-post button {
+  border: solid var(--green-color) 1px;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-family: var(--sans-font);
+  font-weight: normal;
+}
+
+.profile-info {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-info h2 {
+  margin-bottom: 3rem;
+}
+
+.profile-info form {
+  width: 60%;
+}
+
+.profile-info form,
+.profile-info form label:first-child {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 0.83em;
+  margin-inline-start: 0px;
+}
+
+.profile-info form input[type="submit"] {
+  background-color:  #8f8d8d;
+}
+
+#delete-account {
+  text-align: center;
+}
+
+#delete-account input[type="submit"] {
+  background-color:  #920000;
+  margin: 0;
+  margin-top: 2rem;
+}

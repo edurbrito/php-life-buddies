@@ -1,0 +1,300 @@
+body {
+  --green-color: #acc329;
+  --sans-font: "Roboto Condensed";
+
+  font-family: var(--sans-font), sans-serif;
+  width: 100vw;
+  max-width: 100%;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.large-text {
+  font-size: 2rem;
+  margin-bottom: 0;
+  color: white;
+  background-color: var(--green-color);
+  font-weight: bolder;
+  border-radius: 3em;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+input.large-text,
+button.large-text {
+  width: auto;
+}
+
+.top-banner {
+  position: relative;
+  padding: 0 4em 0 4em;
+}
+
+@media (max-width: 768px) {
+  .top-banner {
+    width: 100vw;
+    max-width: 100%;
+    padding: 0 0.2em 0 0.2em;
+  }
+
+  body {
+    max-width: 100%;
+  }
+}
+
+.top-banner img {
+  width: 100%;
+}
+
+.top-banner h2 {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-weight: normal;
+  font-size: xx-large;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+form p {
+  box-sizing: border-box;
+  padding: 1rem 2.5rem;
+  margin: 1rem 0;
+  border: 0.1rem solid black;
+  border-radius: 3rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+input[type="submit"] {
+  margin-top: 0.83em;
+  border-color: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+footer {
+  padding: 0.4em 4em 0.4em 4em;
+  text-align: center;
+}
+
+.text1 {
+  position: absolute;
+  top: 45%;
+  left: 8%;
+  height: 40%;
+  max-width: 40%;
+}
+
+.text2 {
+  position: absolute;
+  height: 35%;
+  max-width: 25%;
+  top: 60%;
+  left: 70%;
+}
+
+.top-banner .large-text {
+  position: absolute;
+  font-weight: bold;
+  font-size: 3vw;
+  width: fit-content;
+  bottom: 0.5em;
+  left: 10vw;
+}
+
+@media (max-width: 768px) {
+
+  .text1 {
+    top: 30%;
+    left: 8%;
+  }
+  
+  .text2 {
+    top: 40%;
+    left: 70%;
+  }
+
+  .top-banner .large-text {
+    font-weight: bold;
+    font-size: 2em;
+    width: fit-content;
+    position: relative;
+    bottom: auto;
+    left: auto;
+  }
+}
+
+.user-form {
+  width: 100%;
+}
+
+.user-form form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1em 4em 0.4em 4em;
+  width: 40%;
+}
+
+@media (max-width: 768px) {
+  .user-form form {
+    width: 80%;
+    padding: 0 0.2em 0 0.2em;
+  }
+}
+
+#snackbar {
+  visibility: visible;
+  background-color: var(--green-color);
+  min-width: 250px;
+  margin-left: -125px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s forwards;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s forwards;
+}
+
+#snackbar.success {
+  background-color: var(--green-color);
+}
+
+#snackbar.error {
+  background-color: rgb(139, 0, 0);
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .popup {
+    width: 80%;
+  }
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: var(--green-color);
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.popup .close:hover {
+  color: var(--green-color);
+}
+
+.popup .content article {
+  margin-bottom: 1rem;
+}
+
+.popup .content article p{
+  margin: 0;
+  margin-bottom: 0.4rem;
+}
+
+.popup .content article a{
+  box-sizing: border-box;
+  padding: 0.2rem;
+  margin: 1rem;
+  border: 0.1rem solid black;
+  border-radius: 3rem;
+  background-color: #fff;
+  text-align: center;
+}

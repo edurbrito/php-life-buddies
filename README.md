@@ -1,16 +1,6 @@
-# LTW Project 2020/21 - G62
+# PHP Life Buddies
 
-## Elements:
-- Eduardo Brito ([up201806271](mailto:up201806271@fe.up.pt))
-- Paulo Ribeiro ([up201806505](mailto:up201806505@fe.up.pt))
-- Pedro Ferreira ([up201806506](mailto:up201806506@fe.up.pt))
-- Pedro Ponte  ([up201809694](mailto:up201809694@fe.up.pt))
-
-## Credentials (email/password (role))
-- pedroferreira@gmail.com / Pedro123 (user)
-- eduardobrito@gmail.com / Eduardo123 (user)
-- pauloribeiro@gmail.com / Paulo123 (user)
-- pedroponte@gmail.com / Ponte123 (user)
+PHP website for listing rescued pets for adoption and offer them a forever home.
 
 ## Features:
 - Security
@@ -72,3 +62,9 @@
 ## Database
 
 ![Database Diagram](docs/database.png)
+
+## Authors:
+- Eduardo Brito, [@edurbrito](https://github.com/edurbrito)
+- Paulo Ribeiro, [@PJscp16](https://github.com/PJscp16)
+- Pedro Ferreira, [@pdff2000](https://github.com/pdff2000)
+- Pedro Ponte, [@pedrovponte](https://github.com/pedrovponte)
